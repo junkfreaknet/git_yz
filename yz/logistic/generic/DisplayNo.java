@@ -2,6 +2,7 @@ package yz.logistic.generic;
 
 public class DisplayNo {
 	
+
 	private String displayno;
 	
 	public DisplayNo(){

@@ -11,18 +11,28 @@ public class BlockNo {
 		this.constructorCommon(blockno);
 	}
 	public BlockNo(BlockNo blockno){
-		this.constructorCommon(blockno.getBlockNo());
+		//this.constructorCommon(blockno.getBlockNo());
 	}
 	private void constructorCommon(String blockno){
 		this.blockno=blockno;		
 	}
-	public String getBlockNo(){
-		return this.blockno;
+	private void constructorCommon(BlockNo source){
+		this.blockno=source.toString();
 	}
+	public BlockNo getBlockNo(){
+		return this;
+	}
+	
 	public void setBlockNo(String blockno){
 		this.blockno=blockno;
 	)
-	public void setBlockNo(BlockNo in){
-		this.blockno=in.getBlockNo();
+	
+	public void setBlockNo(BlockNo source){
+		this.blockno=source.getBlockNo();
 	}
+	
+	public string toString(){
+		return this.blockno;
+	}
+	
 }
