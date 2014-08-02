@@ -3,6 +3,8 @@ package yz.logistic.print;
 public class StandardSheetB4 implements java.awt.print.Printable{
 
 	private mycommons.db.SQLString SQL;
+	private java.awt.Graphics localg;
+	
 	private int pageIdx;
 	private static final int pageMax=5;
 	//constructor
@@ -18,6 +20,7 @@ public class StandardSheetB4 implements java.awt.print.Printable{
 		if(this.pageIdx==this.pageMax){
 			return this.NO_SUCH_PAGE;
 		}else{
+			System.out.println(this.pageIdx);
 			return this.PAGE_EXISTS;
 		}
 		
@@ -25,5 +28,8 @@ public class StandardSheetB4 implements java.awt.print.Printable{
 	//public methods
 	public int getPageIdx(){
 		return this.pageIdx;
+	}
+	public java.awt.Graphics getGrapchis(){
+		return this.localg;
 	}
 }
