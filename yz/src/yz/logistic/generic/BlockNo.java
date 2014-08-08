@@ -8,19 +8,20 @@ public class BlockNo {
 	public BlockNo(){
 		this.constructorCommon(mycommons.constants.Generic.CS_SPACE);
 	}
-	public BlockNo(String blockno){
-		this.constructorCommon(blockno);
+	public BlockNo(String source){
+		this.constructorCommon(source);
 	}
-	public BlockNo(BlockNo blockno){
-		this.constructorCommon(blockno);
+	public BlockNo(BlockNo source){
+		this.constructorCommon(source);
 	}
 
 	//public methods
 	public BlockNo getBlockNo(){
 		return this;
 	}
-	public void setBlockNo(String blockno){
-		this.blockno=blockno;
+
+	public void setBlockNo(String source){
+		this.blockno=source;
 	}
 	
 	public void setBlockNo(BlockNo source){

@@ -3,5 +3,6 @@
 	<classpathentry excluding="tests/" kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/commons"/>
+	<classpathentry kind="lib" path="C:/Users/junkf_000/Documents/MyTrashable/extracts/jdbc40/Microsoft JDBC Driver 4.0 for SQL Server/sqljdbc_4.0/jpn/sqljdbc4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
