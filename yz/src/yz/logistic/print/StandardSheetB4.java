@@ -1,8 +1,5 @@
 package yz.logistic.print;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-
 public class StandardSheetB4 implements java.awt.print.Printable{
 
 	public static boolean StatusCreate;
@@ -10,7 +7,7 @@ public class StandardSheetB4 implements java.awt.print.Printable{
 	
 	private mycommons.db.SQLString SQL;
 	private java.sql.Connection con;
-	static java.sql.Statement stmnt;
+	private java.sql.Statement stmnt;
 	static java.sql.ResultSet rst;
 	
 	//constructor
@@ -29,7 +26,7 @@ public class StandardSheetB4 implements java.awt.print.Printable{
             //String connection_string="jdbc:sqlserver://127.0.0.1\\SQLEXPRESS:1433;database=TESTDBJAVA;user=admNoriyuki;password=admnoriyuki";
             String connection_string="jdbc:sqlserver://127.0.0.1\\SQLEXPRESS:1433;database=TESTDBJAVA;user=sa;password=sanoriyuki";
             //String connection_string="jdbc:sqlserver://localhost\\SQLEXPRESS:1433;database=TESTDBJAVA;user=sa;password=sanoriyuki";
-            this.con = DriverManager.getConnection(connection_string);
+            this.con = java.sql.DriverManager.getConnection(connection_string);
             this.stmnt=con.createStatement();
             this.rst=this.stmnt.executeQuery(this.SQL.toString());
             System.out.println("Connecting DB is success.");
@@ -58,8 +55,8 @@ public class StandardSheetB4 implements java.awt.print.Printable{
 			
 			if(this.rst.next()){
 				id="";
-				//id=rst.getString(0);
-				name=rst.getString(1);
+				id=rst.getString(1);
+				name=rst.getString(2);
 				buff=id + "," + name;
 				System.out.println(buff);
 			
