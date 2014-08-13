@@ -1,17 +1,17 @@
 package yz.logistic.print;
 
-public class StandardSheetB4 implements java.awt.print.Printable{
+public class StandardSheetB4FromDB implements java.awt.print.Printable{
 
 	public static boolean StatusCreate;
 	public static boolean StatusRead;
 	
-	private mycommons.db.SQLString SQL;
+	//private mycommons.db.SQLString SQL;
 	private java.sql.Connection con;
 	private java.sql.Statement stmnt;
 	static java.sql.ResultSet rst;
 	
 	//constructor
-	public StandardSheetB4(mycommons.db.SQLString in_sql){
+	public StandardSheetB4FromDB(mycommons.db.connection.ParaConnection in_para,mycommons.db.SQLString in_sql){
 		
 		//db initiation here.
 		//set database statement and result set
@@ -19,16 +19,22 @@ public class StandardSheetB4 implements java.awt.print.Printable{
 		StatusCreate=true;
 		StatusRead=true;
 		
-		this.SQL=in_sql.getSQLString();
+		//this.SQL=in_sql.getSQLString();
 		
 		try{
+			/***
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             //String connection_string="jdbc:sqlserver://127.0.0.1\\SQLEXPRESS:1433;database=TESTDBJAVA;user=admNoriyuki;password=admnoriyuki";
-            String connection_string="jdbc:sqlserver://127.0.0.1\\SQLEXPRESS:1433;database=TESTDBJAVA;user=sa;password=sanoriyuki";
+			String connection_string="jdbc:sqlserver://127.0.0.1\\SQLEXPRESS:1433;database=TESTDBJAVA;user=sa;password=sanoriyuki";
             //String connection_string="jdbc:sqlserver://localhost\\SQLEXPRESS:1433;database=TESTDBJAVA;user=sa;password=sanoriyuki";
             this.con = java.sql.DriverManager.getConnection(connection_string);
+            ***/
+			mycommons.db.connection.Connection myconnection=new mycommons.db.connection.Connection(in_para);
+			this.con=myconnection.getConnection();
+			
             this.stmnt=con.createStatement();
-            this.rst=this.stmnt.executeQuery(this.SQL.toString());
+            //this.rst=this.stmnt.executeQuery(this.SQL.toString());
+            this.rst=this.stmnt.executeQuery(in_sql.toString());            
             System.out.println("Connecting DB is success.");
             
 			//at last...success
