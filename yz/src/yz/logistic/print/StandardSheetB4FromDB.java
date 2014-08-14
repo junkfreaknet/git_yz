@@ -7,7 +7,7 @@ public class StandardSheetB4FromDB implements java.awt.print.Printable{
 	
 	//private mycommons.db.SQLString SQL;
 	private java.sql.Connection con;
-	private java.sql.Statement stmnt;
+	static java.sql.Statement stmnt;
 	static java.sql.ResultSet rst;
 	
 	//constructor
@@ -24,18 +24,15 @@ public class StandardSheetB4FromDB implements java.awt.print.Printable{
 		try{
 			/***
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            //String connection_string="jdbc:sqlserver://127.0.0.1\\SQLEXPRESS:1433;database=TESTDBJAVA;user=admNoriyuki;password=admnoriyuki";
 			String connection_string="jdbc:sqlserver://127.0.0.1\\SQLEXPRESS:1433;database=TESTDBJAVA;user=sa;password=sanoriyuki";
-            //String connection_string="jdbc:sqlserver://localhost\\SQLEXPRESS:1433;database=TESTDBJAVA;user=sa;password=sanoriyuki";
             this.con = java.sql.DriverManager.getConnection(connection_string);
             ***/
 			mycommons.db.connection.Connection myconnection=new mycommons.db.connection.Connection(in_para);
 			this.con=myconnection.getConnection();
-			
             this.stmnt=con.createStatement();
-            //this.rst=this.stmnt.executeQuery(this.SQL.toString());
-            this.rst=this.stmnt.executeQuery(in_sql.toString());            
-            System.out.println("Connecting DB is success.");
+            this.rst=this.stmnt.executeQuery(in_sql.toString());
+            
+            //System.out.println("Connecting DB is success.");
             
 			//at last...success
 			StatusCreate=true;
@@ -53,19 +50,25 @@ public class StandardSheetB4FromDB implements java.awt.print.Printable{
 	//print routine
 	public int print(java.awt.Graphics g,java.awt.print.PageFormat pf,int page) throws java.awt.print.PrinterException{
 
-		String id,name,buff;
+		String buff;
+		//String id,name,buff;
 		
 		try{
 			
 			StatusRead=true;
 			
 			if(this.rst.next()){
+				/***
 				id="";
 				id=rst.getString(1);
 				name=rst.getString(2);
 				buff=id + "," + name;
 				System.out.println(buff);
-			
+				***/
+				//System.out.println(rst.getString("haibun_mad")+","+rst.getString("ad_ten_no")+","+rst.getString("haiso_course")+","+rst.getString("haiso_order")+","+rst.getString("ten_nm_kanji"));
+				buff=rst.getString("haibun_mad")+","+rst.getString("ad_ten_no")+","+rst.getString("haiso_course")+","+rst.getString("haiso_order")+","+rst.getString("ten_nm_kanji");
+				buff=rst.getString("ten_nm_kanji");
+				g.drawString(buff, 100, 100);
 				//
 				return this.PAGE_EXISTS;
 			}else{
