@@ -29,7 +29,7 @@ public class ShippingDate {
 	//constructor common
 	private void constructorCommon(String yyyymmdd,java.util.Locale locale){
 		
-		if (yyyymmdd.length()==mycommons.constants.Generic.CS_LEN_DATE_DATEFORMAT){
+		if (yyyymmdd.length()==mycommons.constants.Date.CS_LEN_DATE_DATEFORMAT){
 			yyyymmdd=mycommons.routines.generic.Convert.convertDateFormatToYYYYMMDD(yyyymmdd);
 			
 		}

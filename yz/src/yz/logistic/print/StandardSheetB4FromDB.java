@@ -35,7 +35,7 @@ public class StandardSheetB4FromDB implements java.awt.print.Printable{
             //System.out.println("Connecting DB is success.");
             
 			//at last...success
-			StatusCreate=true;
+			//StatusCreate=true;
 			
 		}catch(Exception e){
 			System.out.println(e.toString());
@@ -67,7 +67,7 @@ public class StandardSheetB4FromDB implements java.awt.print.Printable{
 				***/
 				//System.out.println(rst.getString("haibun_mad")+","+rst.getString("ad_ten_no")+","+rst.getString("haiso_course")+","+rst.getString("haiso_order")+","+rst.getString("ten_nm_kanji"));
 				buff=rst.getString("haibun_mad")+","+rst.getString("ad_ten_no")+","+rst.getString("haiso_course")+","+rst.getString("haiso_order")+","+rst.getString("ten_nm_kanji");
-				buff=rst.getString("ten_nm_kanji");
+				//buff=rst.getString("ten_nm_kanji");
 				g.drawString(buff, 100, 100);
 				//
 				return this.PAGE_EXISTS;
