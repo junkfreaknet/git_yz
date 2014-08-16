@@ -46,7 +46,8 @@ public class TestPrintStandardSheetB4 {
 		
 		javax.print.attribute.PrintRequestAttributeSet attributeSet=new javax.print.attribute.HashPrintRequestAttributeSet();
 		attributeSet.add(javax.print.attribute.standard.OrientationRequested.LANDSCAPE);
-		attributeSet.add(javax.print.attribute.standard.MediaName.NA_LETTER_WHITE);
+		attributeSet.add(javax.print.attribute.standard.MediaName.ISO_A4_WHITE);
+		//attributeSet.add(javax.print.attribute.standard.MediaSize.ISO.B4);
 		
 		String dateTime=mycommons.routines.generic.Useful.getYYYYMMDD_HHMMSS(java.util.Calendar.getInstance());
 		attributeSet.add(new javax.print.attribute.standard.JobName("StandardSheetB4-"+dateTime,null));
@@ -84,6 +85,7 @@ public class TestPrintStandardSheetB4 {
 					pj.pageDialog(attributeSet);
 					if(pj.printDialog(attributeSet)){
 						pj.print(attributeSet);
+						
 					}
 			}catch(Exception e){
 				
