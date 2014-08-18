@@ -3,8 +3,13 @@ package testsX;
 //import javax.print.attribute.standard.JobName;
 //import javax.print.attribute.standard.OrientationRequested;
 
-public class TestPtintService implements java.awt.print.Printable{
+public class TestPtintService {
 
+
+	/***
+		print by using javax.print.
+		print source is object.
+	***/
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
@@ -36,24 +41,16 @@ public class TestPtintService implements java.awt.print.Printable{
 		//create print job
 		javax.print.DocPrintJob job=service_s[0].createPrintJob();
 		
-		java.awt.print.PrinterJob pj=java.awt.print.PrinterJob.getPrinterJob();
-		pj.setPrintable(new TestPtintService());
+		//create simple doc
+		javax.print.Doc doc=new javax.print.SimpleDoc(new PrintClass(),docFlavor,null);
+		//print
 		try{
-			//pj.print();
-			System.out.println("end print.");
+			job.print(doc, printAttributes);
 		}catch(Exception e){
-			System.out.println("failed print.");
+			System.out.println("doc printing is failed.");
 		}
+		System.out.println("end program.");
 	}
-	public int print(java.awt.Graphics g,java.awt.print.PageFormat pf,int page) throws java.awt.print.PrinterException{
 
-
-		if(page==0){
-			g.drawString("abcdefg", 100, 100);
-			return java.awt.print.Printable.PAGE_EXISTS;
-		}else{
-			return java.awt.print.Printable.NO_SUCH_PAGE;
-		}
-
-	}
 }
+
