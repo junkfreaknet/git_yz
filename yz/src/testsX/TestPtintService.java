@@ -19,15 +19,20 @@ public class TestPtintService {
 		//doc flavor
 		javax.print.DocFlavor docFlavor=javax.print.DocFlavor.SERVICE_FORMATTED.PRINTABLE;
 		//attribute
-		javax.print.attribute.HashPrintRequestAttributeSet printAttributes=new javax.print.attribute.HashPrintRequestAttributeSet();
+		javax.print.attribute.HashPrintRequestAttributeSet serviceAttributes=new javax.print.attribute.HashPrintRequestAttributeSet();
 		
-		printAttributes.add(javax.print.attribute.standard.OrientationRequested.LANDSCAPE);
+		serviceAttributes.add(javax.print.attribute.standard.OrientationRequested.LANDSCAPE);
 		String dateTime=mycommons.routines.generic.Useful.getYYYYMMDD_HHMMSS(java.util.Calendar.getInstance());
-		printAttributes.add(new javax.print.attribute.standard.JobName("TestPtintService-"+dateTime,null));
-		printAttributes.add(javax.print.attribute.standard.MediaSizeName.ISO_B4);
+		serviceAttributes.add(new javax.print.attribute.standard.JobName("TestPtintService-"+dateTime,java.util.Locale.getDefault()));
+		serviceAttributes.add(javax.print.attribute.standard.MediaSizeName.ISO_B4);
+
+		javax.print.attribute.Attribute[] attribute_s=serviceAttributes.toArray();
+		for(int i=0;i<attribute_s.length;i++){
+			System.out.println("attribute is "+attribute_s[i].getName());
+		}
 		
 		//search services
-		javax.print.PrintService[] service_s=javax.print.PrintServiceLookup.lookupPrintServices(docFlavor, printAttributes);
+		javax.print.PrintService[] service_s=javax.print.PrintServiceLookup.lookupPrintServices(docFlavor, serviceAttributes);
 		
 		if (service_s.length==mycommons.constants.Generic.CS_ARRAY_HAS_NO_ELEMENT){
 			System.out.println("have no printer.");
@@ -39,13 +44,29 @@ public class TestPtintService {
 		}
 		
 		//create print job
-		javax.print.DocPrintJob job=service_s[0].createPrintJob();
+		int sn=1;//print service index
+		javax.print.DocPrintJob job=service_s[sn].createPrintJob();
 		
+		//create doc attributes set
+		/***
+		javax.print.attribute.HashDocAttributeSet docAttributes=new javax.print.attribute.HashDocAttributeSet();
+		docAttributes.add(javax.print.attribute.standard.OrientationRequested.LANDSCAPE);
+		String dateTime=mycommons.routines.generic.Useful.getYYYYMMDD_HHMMSS(java.util.Calendar.getInstance());
+		docAttributes.add(new javax.print.attribute.standard.JobName("TestPrintService-"+dateTime,null));
+		docAttributes.add(javax.print.attribute.standard.MediaSizeName.ISO_B4);
+		***/
 		//create simple doc
 		javax.print.Doc doc=new javax.print.SimpleDoc(new PrintClass(),docFlavor,null);
+		//javax.print.Doc doc=new javax.print.SimpleDoc(new PrintClass(),docFlavor,null);
 		//print
 		try{
-			job.print(doc, printAttributes);
+			/***
+			for(int i=0;i<attribute_s.length;i++){
+				System.out.println("attribute is "+attribute_s[i].getName());
+			}
+			***/
+			job.print(doc, serviceAttributes);
+			System.out.println("write document.");
 		}catch(Exception e){
 			System.out.println("doc printing is failed.");
 		}
