@@ -48,6 +48,8 @@ public class TestPtintService {
 		javax.print.DocPrintJob job=service_s[sn].createPrintJob();
 		
 		//create doc attributes set
+
+		
 		/***
 		javax.print.attribute.HashDocAttributeSet docAttributes=new javax.print.attribute.HashDocAttributeSet();
 		docAttributes.add(javax.print.attribute.standard.OrientationRequested.LANDSCAPE);
