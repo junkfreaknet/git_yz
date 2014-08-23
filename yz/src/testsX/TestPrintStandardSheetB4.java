@@ -1,8 +1,8 @@
 package testsX;
 
-import java.awt.print.PageFormat;
-import java.awt.print.Paper;
-import java.util.Calendar;
+//import java.awt.print.PageFormat;
+//import java.awt.print.Paper;
+//import java.util.Calendar;
 
 import yz.logistic.print.StandardSheetB4FromDB;
 
@@ -10,6 +10,10 @@ public class TestPrintStandardSheetB4 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+		//set printer name
+		final String printerTarget="Bullzip PDF Printer";
+		mycommons.print.Printer printer=new mycommons.print.Printer(printerTarget);
 		
 		//setting db start
 		String SQLString;
@@ -33,82 +37,13 @@ public class TestPrintStandardSheetB4 {
 		paraConnection.setPassWord(new mycommons.db.connection.Password("sanoriyuki"));
 		
 		//setting db end
+
+		//create print object and print sheet.
+		yz.logistic.print.PrintStandardSheetB4FromDB shhet=new yz.logistic.print.PrintStandardSheetB4FromDB(printer, paraConnection, sql);
 		
-		//***setting print start
-		//In using "JAVA Print Service",you do under this line.
-		//1.set a document flavor.
-		//2.create a document attribute.
-		//3.look up printing services that can work with the document flavor and the document attribute. and select one of them.
-		//4.create a printing job from a selected printing service
-		//5.call "print" from registered printing job.
+		//end  message
+		System.out.println("end print.");
 		
-		//javax.print.DocFlavor docFlavor=javax.print.DocFlavor.SERVICE_FORMATTED.PRINTABLE;
-		
-		javax.print.attribute.PrintRequestAttributeSet attributeSet=new javax.print.attribute.HashPrintRequestAttributeSet();
-		attributeSet.add(javax.print.attribute.standard.OrientationRequested.LANDSCAPE);
-		attributeSet.add(javax.print.attribute.standard.MediaName.ISO_A4_WHITE);
-		//attributeSet.add(javax.print.attribute.standard.MediaSize.ISO.B4);
-		
-		String dateTime=mycommons.routines.generic.Useful.getYYYYMMDD_HHMMSS(java.util.Calendar.getInstance());
-		attributeSet.add(new javax.print.attribute.standard.JobName("StandardSheetB4-"+dateTime,null));
-		
-		//javax.print.PrintService[] printService_s=javax.print.PrintServiceLookup.lookupPrintServices(docFlavor, attributeSet);
-		java.awt.print.PrinterJob pj=java.awt.print.PrinterJob.getPrinterJob();
-		pj.setPrintable(new yz.logistic.print.StandardSheetB4FromDB(paraConnection, sql));
-		
-		
-		/***
-		java.awt.print.PageFormat pf=new java.awt.print.PageFormat();
-		pf.setOrientation(java.awt.print.PageFormat.LANDSCAPE);
-		java.awt.print.Paper paper=new java.awt.print.Paper();
-		pf.setPaper(new java.awt.print.Paper());
-		
-		java.awt.print.PrinterJob pj=java.awt.print.PrinterJob.getPrinterJob();		
-		pj.setPrintable(new yz.logistic.print.StandardSheetB4FromDB(paraConnection, sql), pf);
-		***/
-		//***setting print end
-		
-		if(StandardSheetB4FromDB.StatusCreate){
-			
-		}else{
-			System.out.println("Creating sheet is failed.");
-			System.exit(1);
-		}
-		
-		javax.print.PrintService[] printService_s=java.awt.print.PrinterJob.lookupPrintServices();
-		if(printService_s.length>mycommons.constants.Generic.CS_ARRAY_HAS_NO_ELEMENT){
-			for(int i=0;i<printService_s.length;i++){
-				System.out.println(printService_s[i].getName());
-			}
-				try{
-					pj.setPrintService(printService_s[3]);
-					pj.pageDialog(attributeSet);
-					if(pj.printDialog(attributeSet)){
-						pj.print(attributeSet);
-						
-					}
-			}catch(Exception e){
-				
-			}
-		}else{
-			System.out.println("no priter job.");
-			System.exit(1);
-		}
-		/***
-		//pj.print();
-		try{
-			pj.print();
-			if(StandardSheetB4FromDB.StatusRead){
-				
-			}else{
-				System.out.println("Reading recordset is failed.");
-				System.exit(1);
-			}
-			System.out.println("printing is end.");
-		}catch(Exception e){
-			System.out.println("printing is failed.");
-		}
-		***/
 	}
 
 }

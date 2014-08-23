@@ -5,7 +5,6 @@ public class StandardSheetB4FromDB implements java.awt.print.Printable{
 	public static boolean StatusCreate;
 	public static boolean StatusRead;
 	
-	//private mycommons.db.SQLString SQL;
 	private java.sql.Connection con;
 	static java.sql.Statement stmnt;
 	static java.sql.ResultSet rst;
@@ -19,7 +18,6 @@ public class StandardSheetB4FromDB implements java.awt.print.Printable{
 		StatusCreate=true;
 		StatusRead=true;
 		
-		//this.SQL=in_sql.getSQLString();
 		
 		try{
 			/***
@@ -33,7 +31,6 @@ public class StandardSheetB4FromDB implements java.awt.print.Printable{
             this.rst=this.stmnt.executeQuery(in_sql.toString());
             
 			//at last...success
-			//StatusCreate=true;
 			
 		}catch(Exception e){
 			System.out.println(e.toString());
