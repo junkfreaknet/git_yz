@@ -12,8 +12,8 @@ public class TestPrintStandardSheetB4 {
 		// TODO Auto-generated method stub
 		
 		//set printer name
-		final String printerTarget="Bullzip PDF Printer";
-		mycommons.print.Printer printer=new mycommons.print.Printer(printerTarget);
+		//final String printerTarget="Bullzip PDF Printer";
+		mycommons.print.Printer printer=new mycommons.print.Printer("Bullzip PDF Printer");
 		
 		//setting db start
 		String SQLString;
@@ -21,7 +21,7 @@ public class TestPrintStandardSheetB4 {
 		SQLString="select distinct ";
 		SQLString=SQLString+"syu_ymd,bin_kb,haibun_mad,ad_ten_no,haiso_course,haiso_order,ten_no,ten_nm_kanji ";
 		SQLString=SQLString+" from dbo.tbl_outfile ";
-		SQLString=SQLString+" where syu_ymd='20140807' and bin_kb='10' ";
+		SQLString=SQLString+" where jigyo_cd='0300' and syu_ymd='20140807' and bin_kb='10' ";
 		SQLString=SQLString+" order by haibun_mad,ad_ten_no,haiso_course,haiso_order,ten_no";
 		
 		mycommons.db.SQLString sql=new mycommons.db.SQLString(SQLString);
