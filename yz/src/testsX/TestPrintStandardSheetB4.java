@@ -4,7 +4,7 @@ package testsX;
 //import java.awt.print.Paper;
 //import java.util.Calendar;
 
-import yz.logistic.print.StandardSheetB4FromDB;
+//import yz.logistic.print.StandardSheetB4FromDB;
 
 public class TestPrintStandardSheetB4 {
 
