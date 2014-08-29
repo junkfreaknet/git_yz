@@ -55,7 +55,9 @@ public class PrintStandardSheetB4FromDB {
 		javax.print.DocPrintJob docPrintJob=printService_s[idxServices].createPrintJob();
 		
 		//SimpleDoc
-		javax.print.SimpleDoc doc=new javax.print.SimpleDoc(new StandardSheetB4FromDB(paraConnection,sql),docFlavor , null);
+		yz.logistic.print.StandardSheetB4FromDB printObj=new yz.logistic.print.StandardSheetB4FromDB();
+		printObj.init(paraConnection, sql);
+		javax.print.SimpleDoc doc=new javax.print.SimpleDoc(printObj,docFlavor , null);
 		
 		//print
 		try{

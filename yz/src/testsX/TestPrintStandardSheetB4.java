@@ -9,7 +9,6 @@ package testsX;
 public class TestPrintStandardSheetB4 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		
 		//set printer name
 		//final String printerTarget="Bullzip PDF Printer";
@@ -22,6 +21,7 @@ public class TestPrintStandardSheetB4 {
 		SQLString=SQLString+"syu_ymd,bin_kb,haibun_mad,ad_ten_no,haiso_course,haiso_order,ten_no,ten_nm_kanji ";
 		SQLString=SQLString+" from dbo.tbl_outfile ";
 		SQLString=SQLString+" where jigyo_cd='0300' and syu_ymd='20140807' and bin_kb='10' ";
+		SQLString=SQLString+" and haibun_mad between '01' and '13' ";
 		SQLString=SQLString+" order by haibun_mad,ad_ten_no,haiso_course,haiso_order,ten_no";
 		
 		mycommons.db.SQLString sql=new mycommons.db.SQLString(SQLString);
