@@ -16,7 +16,7 @@ public class BlockNo {
 	}
 
 	//public methods
-	public BlockNo getBlockNo(){
+	public BlockNo get(){
 		return this;
 	}
 
@@ -25,10 +25,10 @@ public class BlockNo {
 	}
 	
 	public void setBlockNo(BlockNo source){
-		this.blockno=source.toString();
+		this.blockno=source.getBlockNo();
 	}
 	
-	public String toString(){
+	public String getBlockNo(){
 		return this.blockno;
 	}
 
@@ -37,6 +37,6 @@ public class BlockNo {
 		this.blockno=blockno;
 	}
 	private void constructorCommon(BlockNo source){
-		this.constructorCommon(source.toString());
+		this.constructorCommon(source.getBlockNo());
 	}	
 }
