@@ -16,7 +16,7 @@ public class DisplayNo {
 		
 	}
 	//public methods
-	public DisplayNo getDisplayNo(){
+	public DisplayNo get(){
 		return this;
 	}
 	public void setDisplayNo(String source){
@@ -26,7 +26,7 @@ public class DisplayNo {
 	public void setDisplayNo(DisplayNo source){
 		this.displayno=source.toString();
 	}
-	public String toString(){
+	public String getDisplayNo(){
 		return this.displayno;
 	}
 	//private methods
@@ -34,6 +34,6 @@ public class DisplayNo {
 		this.displayno=source;
 	}
 	private void constructorCommon(DisplayNo source){
-		this.constructorCommon(source.toString());
+		this.constructorCommon(source.getDisplayNo());
 	}
 }

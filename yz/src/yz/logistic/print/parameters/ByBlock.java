@@ -23,4 +23,13 @@ public class ByBlock {
 	public yz.logistic.generic.Site getSite(){
 		return this.site;
 	}
+	public yz.logistic.generic.ShippingDate getShippingDate(){
+		return this.shippingdate;
+	}
+	public yz.logistic.generic.ShippingNo getShippingNo(){
+		return this.shippingno;
+	}
+	public yz.logistic.generic.BlockNo[] getBlockNo_s(){
+		return this.blockno_s;
+	}
 }

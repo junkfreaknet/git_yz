@@ -17,7 +17,7 @@ public class Site {
 	}
 
 	//public methods
-	public Site getSite(){
+	public Site get(){
 		return this;
 	}
 
@@ -29,7 +29,7 @@ public class Site {
 		this.sitecode=source.toString();
 	}
 	
-	public String toString(){
+	public String getSite(){
 		return this.sitecode;
 	}
 
@@ -38,6 +38,6 @@ public class Site {
 		this.sitecode=blockno;
 	}
 	private void constructorCommon(Site source){
-		this.constructorCommon(source.toString());
+		this.constructorCommon(source.getSite());
 	}
 }

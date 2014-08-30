@@ -1,4 +1,4 @@
-package yz.logistic.print;
+package yz.logistic.print.sheets;
 
 public class StandardSheetB4FromDB implements java.awt.print.Printable{
 

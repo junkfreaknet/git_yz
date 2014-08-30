@@ -44,6 +44,9 @@ public class ShippingDate {
 	}
 	
 	//public methods
+	public yz.logistic.generic.ShippingDate get(){
+		return this;
+	}
 	public String getYYYYMMDD(){
 		return this.shippingDateYYYYMMDD;
 	}

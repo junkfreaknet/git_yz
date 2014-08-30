@@ -22,16 +22,16 @@ public class ShippingNo {
 		this.shippingno=source.toString();
 	}
 	//public method
-	public ShippingNo getShippingNo(){
+	public ShippingNo get(){
 		return this;
 	}
-	public String toString(){
+	public String getShippingNo(){
 		return this.shippingno;
 	}
 	public void setShippingNo(String source){
 		this.shippingno=source;
 	}
 	public void setShippingNo(ShippingNo source){
-		this.shippingno=source.toString();
+		this.shippingno=source.getShippingNo();
 	}
 }
