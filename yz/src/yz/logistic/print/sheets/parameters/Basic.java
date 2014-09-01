@@ -1,4 +1,4 @@
-package yz.logistic.print.parameters;
+package yz.logistic.print.sheets.parameters;
 
 public class Basic {
 

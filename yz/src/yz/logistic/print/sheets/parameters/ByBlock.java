@@ -1,4 +1,4 @@
-package yz.logistic.print.parameters;
+package yz.logistic.print.sheets.parameters;
 
 public class ByBlock {
 
@@ -28,6 +28,7 @@ public class ByBlock {
 		
 	}
 	//public methods
+	//get
 	public yz.logistic.generic.Site getSite(){
 		return this.basic.getSite();
 	}
@@ -39,5 +40,23 @@ public class ByBlock {
 	}
 	public yz.logistic.generic.BlockNo[] getBlockNo_s(){
 		return this.blockno_s;
+	}
+	//public methods
+	//set
+	public void setSite(yz.logistic.generic.Site site){
+		this.basic.setSite(site);
+		
+	}
+	public void setShippingDate(yz.logistic.generic.ShippingDate shippingdate){
+		this.basic.setShippingDate(shippingdate);
+	}
+	public void setShippingNo(yz.logistic.generic.ShippingNo shippingno){
+		this.basic.setShippingNo(shippingno);
+	}
+	public void setBlockNo_s(yz.logistic.generic.BlockNo[] in_blockno_s){
+		this.blockno_s=blockno_s;
+	}
+	public void setBasic(yz.logistic.print.sheets.parameters.Basic basic){
+		this.basic.copy(basic);
 	}
 }
