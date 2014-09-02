@@ -1,4 +1,4 @@
-package yz.logistic.print.sheets;
+package yz.logistic.save;
 
 public class SealA4BIT implements java.awt.print.Printable {
 

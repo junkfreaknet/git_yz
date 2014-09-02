@@ -3,7 +3,7 @@ package yz.logistic.print.sheets;
 public class PrintSheets {
 
 	//print sheets by block numbers
-	public static void print(Object drawer,yz.logistic.print.sheets.attributes.PrintServiceAttributes printAttributes,mycommons.db.connection.ParaConnection paraDBConnection,yz.logistic.print.sheets.parameters.ByBlock paraBlock){
+	public static void print(Object drawer,mycommons.db.connection.ParaConnection paraDBConnection,yz.logistic.print.sheets.parameters.ByBlock paraBlock){
 		/***
 		 EXPLANATION
 		 drawer...an object of sheet drawer 
@@ -15,6 +15,10 @@ public class PrintSheets {
 		
 		//print sheet by a block
 		for(int i=0;i<paraBlock.getBlockNo_s().length;i++){
+			
+			//get target print service
+			//create sql string
+			//init db db connection and initialize recordset
 			
 		}
 		

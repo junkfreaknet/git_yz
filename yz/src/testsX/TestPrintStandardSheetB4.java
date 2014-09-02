@@ -39,7 +39,7 @@ public class TestPrintStandardSheetB4 {
 		//setting db end
 
 		//create print object and print sheet.
-		yz.logistic.print.sheets.PrintStandardSheetB4FromDB shhet=new yz.logistic.print.sheets.PrintStandardSheetB4FromDB(printer, paraConnection, sql);
+		yz.logistic.save.PrintStandardSheetB4FromDB shhet=new yz.logistic.save.PrintStandardSheetB4FromDB(printer, paraConnection, sql);
 		
 		//end  message
 		System.out.println("end print.");
