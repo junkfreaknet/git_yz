@@ -20,7 +20,7 @@ public class StandardSheetB4FromDB implements java.awt.print.Printable{
 		
 	}
 	//initialize connection to db etc
-	public void init(mycommons.db.connection.ParaConnection in_para,mycommons.db.SQLString in_sql){
+	public void initConnection(mycommons.db.connection.ParaConnection in_para){
 		try{
 			/***
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -30,7 +30,7 @@ public class StandardSheetB4FromDB implements java.awt.print.Printable{
 			mycommons.db.connection.Connection myconnection=new mycommons.db.connection.Connection(in_para);
 			this.con=myconnection.getConnection();
             this.stmnt=con.createStatement();
-            this.rst=this.stmnt.executeQuery(in_sql.toString());
+            //this.rst=this.stmnt.executeQuery(in_sql.toString());
 			
 		}catch(Exception e){
 			
@@ -39,6 +39,13 @@ public class StandardSheetB4FromDB implements java.awt.print.Printable{
 			//at last...failed
 			StatusCreate=false;
 		}		
+	}
+	public void initRecordSet(mycommons.db.SQLString in_sql){
+		try{
+			this.rst=this.stmnt.executeQuery(in_sql.toString());
+		}catch(Exception e){
+			
+		}
 	}
 	//print routine
 	public int print(java.awt.Graphics g,java.awt.print.PageFormat pf,int page) throws java.awt.print.PrinterException{

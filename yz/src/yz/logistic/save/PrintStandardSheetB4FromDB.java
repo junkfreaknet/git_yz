@@ -58,7 +58,8 @@ public class PrintStandardSheetB4FromDB {
 		
 		//SimpleDoc
 		yz.logistic.print.sheets.StandardSheetB4FromDB printObj=new yz.logistic.print.sheets.StandardSheetB4FromDB();
-		printObj.init(paraConnection, sql);
+		printObj.initConnection(paraConnection);
+		printObj.initRecordSet(sql);
 		javax.print.SimpleDoc doc=new javax.print.SimpleDoc(printObj,docFlavor , null);
 		
 		//print

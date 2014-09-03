@@ -1,9 +1,9 @@
 package yz.logistic.print.sheets;
 
-public class PrintSheets {
+public class PrintSheetsFromDB {
 
 	//print sheets by block numbers
-	public static void print(Object drawer,mycommons.db.connection.ParaConnection paraDBConnection,yz.logistic.print.sheets.parameters.ByBlock paraBlock){
+	public void print(Object drawer,yz.logistic.print.sheets.PrintParameter paraPrintParameter,yz.logistic.print.sheets.parameters.ByBlock paraBlock){
 		/***
 		 EXPLANATION
 		 drawer...an object of sheet drawer 
@@ -19,8 +19,12 @@ public class PrintSheets {
 			//get target print service
 			//create sql string
 			//init db db connection and initialize recordset
+			this.printCore(drawer, paraPrintParameter);
 			
 		}
+		
+	}
+	private void printCore(Object drawer,yz.logistic.print.sheets.PrintParameter paraPrintParameter){
 		
 	}
 }
