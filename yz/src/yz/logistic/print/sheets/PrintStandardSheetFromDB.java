@@ -29,6 +29,39 @@ public class PrintStandardSheetFromDB {
 		//attribute set
 		javax.print.attribute.HashPrintRequestAttributeSet attributeSet=this.getPrintReauestAttributeSet(paraPrintParameter, blockno);
 		
+		//print service
+		javax.print.PrintService printService=this.getPrintService(paraPrintParameter.getPrinter(), docFlavor, attributeSet);
+
+		//doc print job
+		javax.print.DocPrintJob docPrintJob=printService.createPrintJob();
+		
+		//simple doc
+		javax.print.SimpleDoc simpledoc=new javax.print.SimpleDoc(drawer, docFlavor, null);
+		
+		//print
+		try{
+			docPrintJob.print(simpledoc, attributeSet);
+		}catch(Exception e){
+			System.out.println("error:doc print job ");
+			System.exit(mycommons.constants.System.CS_EXIT_ERROR);
+		}
+		
+	}
+	
+	private mycommons.db.SQLString createSQL(yz.logistic.print.sheets.parameters.ByBlock byBlock,yz.logistic.generic.BlockNo blockno){
+
+		String sql;
+		
+		sql="select at_ten";
+
+		sql="select distinct ";
+		sql=sql+"syu_ymd,bin_kb,haibun_mad,ad_ten_no,haiso_course,haiso_order,ten_no,ten_nm_kanji ";
+		sql=sql+" from dbo.tbl_outfile ";
+		sql=sql+" where jigyo_cd='0300' and syu_ymd='20140807' and bin_kb='10' ";
+		sql=sql+" and haibun_mad between '01' and '13' ";
+		sql=sql+" order by haibun_mad,ad_ten_no,haiso_course,haiso_order,ten_no";		
+		return new mycommons.db.SQLString(sql);
+
 	}
 	//print by a block number end
 	
@@ -58,6 +91,30 @@ public class PrintStandardSheetFromDB {
 		String dateTime=mycommons.routines.generic.Useful.getYYYYMMDD_HHMMSS(java.util.Calendar.getInstance());
 		rv.add(new javax.print.attribute.standard.JobName(paraPrint.getSheet().toStringName()+dateTime,java.util.Locale.getDefault()));
 		
+		return rv;
+		
+	}
+	
+	//get print service
+	private javax.print.PrintService getPrintService(mycommons.print.Printer printer,javax.print.DocFlavor docFlavor,javax.print.attribute.HashPrintRequestAttributeSet attributeSet){
+		
+		javax.print.PrintService rv=null;
+		boolean flgPrinterExist;
+		flgPrinterExist=false;
+		
+		javax.print.PrintService[] printService_s=javax.print.PrintServiceLookup.lookupPrintServices(docFlavor, attributeSet);
+		if(printService_s.length==mycommons.constants.Generic.CS_ARRAY_HAS_NO_ELEMENT){
+			System.out.println("we have no printer fits your condition.");
+			System.exit(mycommons.constants.System.CS_EXIT_ERROR);
+		}
+		//
+		for(int i=0;i<printService_s.length;i++){
+			if(printService_s[i].getName().equalsIgnoreCase(printer.toStringName())){
+				rv=printService_s[i];
+				flgPrinterExist=true;
+				break;
+			}
+		}
 		return rv;
 		
 	}
