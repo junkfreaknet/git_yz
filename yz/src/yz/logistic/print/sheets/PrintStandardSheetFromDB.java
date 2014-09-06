@@ -35,6 +35,8 @@ public class PrintStandardSheetFromDB {
 		//doc print job
 		javax.print.DocPrintJob docPrintJob=printService.createPrintJob();
 		
+		//init record set
+		drawer.initRecordSet(createSQL(byBlock,blockno));
 		//simple doc
 		javax.print.SimpleDoc simpledoc=new javax.print.SimpleDoc(drawer, docFlavor, null);
 		
@@ -52,13 +54,13 @@ public class PrintStandardSheetFromDB {
 
 		String sql;
 		
-		sql="select at_ten";
-
 		sql="select distinct ";
-		sql=sql+"syu_ymd,bin_kb,haibun_mad,ad_ten_no,haiso_course,haiso_order,ten_no,ten_nm_kanji ";
+		sql=sql+"ad_ten_no,haibun_mad,ten_no ";
 		sql=sql+" from dbo.tbl_outfile ";
-		sql=sql+" where jigyo_cd='0300' and syu_ymd='20140807' and bin_kb='10' ";
-		sql=sql+" and haibun_mad between '01' and '13' ";
+		sql=sql+" where "+"'"+byBlock.getSite().getSite()+"'"+ " and ";
+		sql=sql+"'"+byBlock.getShippingDate().getYYYYMMDD()+"'"+" and ";
+		sql=sql+"'"+byBlock.getShippingNo().getShippingNo()+"'"+" and ";
+		sql=sql+"'"+blockno.getBlockNo()+"'";
 		sql=sql+" order by haibun_mad,ad_ten_no,haiso_course,haiso_order,ten_no";		
 		return new mycommons.db.SQLString(sql);
 

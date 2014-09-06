@@ -1,10 +1,12 @@
 package yz.logistic.print.sheets.parameters;
+import java.util.*;
 
 public class ByBlock {
 
 	//members
 	private Basic basic;
 	private yz.logistic.generic.BlockNo[] blockno_s;
+	//private java.util.List<yz.logistic.generic.BlockNo> blocks;
 	
 	//constructors
 	//create an empty object
@@ -18,6 +20,7 @@ public class ByBlock {
 		this.basic.setShippingDate(inShippingDate);
 		this.basic.setShippingNo(inShippingNo);
 		this.blockno_s=inBlockNo_s;
+		
 		
 	}
 	
