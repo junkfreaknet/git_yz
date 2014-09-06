@@ -36,12 +36,12 @@ public class MainPrintSheetFromDB {
 		yz.logistic.generic.ShippingNo shippingNo=new yz.logistic.generic.ShippingNo("10");
 		yz.logistic.print.sheets.parameters.Basic paraBasic=new yz.logistic.print.sheets.parameters.Basic(site, shippingDate,shippingNo);
 		
-		//byBlock.setBasic(paraBasic);
+		byBlock.setBasic(paraBasic);
 		
 		yz.logistic.generic.BlockNo[] blockno_s=new yz.logistic.generic.BlockNo[3];
-		blockno_s[0].setBlockNo("01");
-		blockno_s[1].setBlockNo("02");
-		blockno_s[2].setBlockNo("03");
+		blockno_s[0]=new yz.logistic.generic.BlockNo("01");
+		blockno_s[1]=new yz.logistic.generic.BlockNo("01");
+		blockno_s[2]=new yz.logistic.generic.BlockNo("01");
 		byBlock.setBlockNo_s(blockno_s);
 		
 		
