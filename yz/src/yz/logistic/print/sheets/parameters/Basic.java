@@ -6,7 +6,14 @@ public class Basic {
 	private yz.logistic.generic.Site site;
 	private yz.logistic.generic.ShippingDate shippingdate;
 	private yz.logistic.generic.ShippingNo shippingno;
-	
+
+	//constructor empty
+	public Basic(){
+		this.site=new yz.logistic.generic.Site();
+		this.shippingno=new yz.logistic.generic.ShippingNo();
+		this.shippingdate=new yz.logistic.generic.ShippingDate();
+	}
+	//constructor
 	public Basic(yz.logistic.generic.Site inSite,yz.logistic.generic.ShippingDate inShippingDate,yz.logistic.generic.ShippingNo inShippingNo){
 		this.site=inSite;
 		this.shippingdate=inShippingDate;

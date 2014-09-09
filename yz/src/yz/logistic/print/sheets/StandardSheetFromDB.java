@@ -40,13 +40,28 @@ public class StandardSheetFromDB implements java.awt.print.Printable{
 			StatusCreate=false;
 		}		
 	}
+	/***
 	public void initRecordSet(mycommons.db.SQLString in_sql){
 		try{
 			this.rst=this.stmnt.executeQuery(in_sql.toString());
 		}catch(Exception e){
-			
+			System.out.println("init record set is failed.");
+			System.out.println(e.toString());
 		}
 	}
+	***/
+	public boolean initRecordSet(mycommons.db.SQLString in_sql){
+		
+		boolean rv=true;
+		try{
+			this.rst=this.stmnt.executeQuery(in_sql.toString());
+		}catch(Exception e){
+			System.out.println("init record set is failed.");
+			System.out.println(e.toString());
+			rv=false;
+		}
+		return rv;
+	}	
 	//print routine
 	public int print(java.awt.Graphics g,java.awt.print.PageFormat pf,int page) throws java.awt.print.PrinterException{
 

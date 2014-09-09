@@ -15,7 +15,13 @@ public class ShippingDate {
 	//CAUNTION
 	//Argument in must to be a yyyymmdd value,
 	//or a yyyy/mm/dd value.
-	//	
+	//
+	//!!!!!YOU MUST NOT SET PARAMETER YYYYMMDD VALUE SPACE.!!!!!
+	//
+	public ShippingDate(){
+		
+		this.constructorCommon(mycommons.routines.generic.Date.getYYYYMMDD(), mycommons.system.Defaults.LOCALE);
+	}
 	public ShippingDate(String yyyymmdd){
 
 		this.constructorCommon(yyyymmdd,mycommons.system.Defaults.LOCALE);
@@ -33,7 +39,7 @@ public class ShippingDate {
 			yyyymmdd=mycommons.routines.generic.Convert.convertDateFormatToYYYYMMDD(yyyymmdd);
 			
 		}
-		
+
 		this.shippingDateYYYYMMDD=yyyymmdd;
 		this.shippingDateDateFormat=mycommons.routines.generic.Convert.convertYYYYMMDDToDateFormat(yyyymmdd);
 		this.intWeekday=mycommons.routines.generic.Date.getWeekday(yyyymmdd);
@@ -64,5 +70,9 @@ public class ShippingDate {
 	}
 	public String getWeekdayByLocale(){
 		return this.weekdayByLocale;
+	}
+	//
+	public void change(){
+		
 	}
 }

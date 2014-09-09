@@ -29,23 +29,28 @@ public class PrintStandardSheetFromDB {
 		//attribute set
 		javax.print.attribute.HashPrintRequestAttributeSet attributeSet=this.getPrintReauestAttributeSet(paraPrintParameter, blockno);
 		
-		//print service
+		//get print service
+		//if print service can't find,exit print 
 		javax.print.PrintService printService=this.getPrintService(paraPrintParameter.getPrinter(), docFlavor, attributeSet);
-
+		
 		//doc print job
 		javax.print.DocPrintJob docPrintJob=printService.createPrintJob();
 		
 		//init record set
-		drawer.initRecordSet(createSQL(byBlock,blockno));
-		//simple doc
-		javax.print.SimpleDoc simpledoc=new javax.print.SimpleDoc(drawer, docFlavor, null);
+		//drawer.initRecordSet(createSQL(byBlock,blockno));
+		if(drawer.initRecordSet(createSQL(byBlock,blockno))){
+			//simple doc
+			javax.print.SimpleDoc simpledoc=new javax.print.SimpleDoc(drawer, docFlavor, null);
 		
-		//print
-		try{
-			docPrintJob.print(simpledoc, attributeSet);
-		}catch(Exception e){
-			System.out.println("error:doc print job ");
-			System.exit(mycommons.constants.System.CS_EXIT_ERROR);
+			//print
+			try{
+				docPrintJob.print(simpledoc, attributeSet);
+			}catch(Exception e){
+				System.out.println("error:doc print job ");
+				System.exit(mycommons.constants.System.CS_EXIT_ERROR);
+			}
+		}else{
+			System.out.println("goto next block");
 		}
 		
 	}
@@ -55,13 +60,15 @@ public class PrintStandardSheetFromDB {
 		String sql;
 		
 		sql="select distinct ";
-		sql=sql+"ad_ten_no,haibun_mad,ten_no ";
+		sql=sql+"ad_ten_no,haibun_mad,ten_no,haiso_course,haiso_order ";
 		sql=sql+" from dbo.tbl_outfile ";
-		sql=sql+" where "+"'"+byBlock.getSite().getSite()+"'"+ " and ";
-		sql=sql+"'"+byBlock.getShippingDate().getYYYYMMDD()+"'"+" and ";
-		sql=sql+"'"+byBlock.getShippingNo().getShippingNo()+"'"+" and ";
-		sql=sql+"'"+blockno.getBlockNo()+"'";
-		sql=sql+" order by haibun_mad,ad_ten_no,haiso_course,haiso_order,ten_no";		
+		sql=sql+" where ";
+		sql=sql+" jigyo_cd="+"'"+byBlock.getSite().getSite()+"'"+ " and ";
+		sql=sql+" syu_ymd="+"'"+byBlock.getShippingDate().getYYYYMMDD()+"'"+" and ";
+		sql=sql+"bin_kb="+"'"+byBlock.getShippingNo().getShippingNo()+"'"+" and ";
+		sql=sql+"haibun_mad="+"'"+blockno.getBlockNo()+"'";
+		sql=sql+" order by haibun_mad,ad_ten_no,haiso_course,haiso_order,ten_no";
+		//System.out.println("sql is "+sql);
 		return new mycommons.db.SQLString(sql);
 
 	}
@@ -91,7 +98,7 @@ public class PrintStandardSheetFromDB {
 		
 		//job name
 		String dateTime=mycommons.routines.generic.Useful.getYYYYMMDD_HHMMSS(java.util.Calendar.getInstance());
-		rv.add(new javax.print.attribute.standard.JobName(paraPrint.getSheet().toStringName()+dateTime,java.util.Locale.getDefault()));
+		rv.add(new javax.print.attribute.standard.JobName(paraPrint.getSheet().toStringName()+"-"+blockNo.getBlockNo()+"-"+dateTime,java.util.Locale.getDefault()));
 		
 		return rv;
 		
