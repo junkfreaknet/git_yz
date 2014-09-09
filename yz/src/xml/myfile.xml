@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<body name="schedule">
+	<content>
+		<schedule date="2014/09/10" memo="holiday"></schedule>
+		<schedule date="2014/09/11" memo="2nd holiday"></schedule></content></body>
