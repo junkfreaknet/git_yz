@@ -1,0 +1,12 @@
+Sep 17, 2014 3:24:56 AM log.MainLog3 <clinit>
+CONFIG: ログ設定: LogManagerを設定しました。
+Sep 17, 2014 3:24:56 AM log.MainLog3 main
+詳細レベル(低): fine
+Sep 17, 2014 3:24:56 AM log.MainLog3 main
+CONFIG: config
+Sep 17, 2014 3:24:56 AM log.MainLog3 main
+情報: info
+Sep 17, 2014 3:24:56 AM log.MainLog3 main
+WARNING: warnig
+Sep 17, 2014 3:24:56 AM log.MainLog3 main
+SEVERE: sever

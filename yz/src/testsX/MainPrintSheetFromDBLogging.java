@@ -1,6 +1,6 @@
 package testsX;
 
-public class MainPrintSheetFromDB {
+public class MainPrintSheetFromDBLogging {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -9,6 +9,9 @@ public class MainPrintSheetFromDB {
 		
 		final String PGNAME="MainPrintSheetFromDB";
 		
+		Logging logging=new Logging("MainPrintSheetFromDBLogging");
+		logging.log("main","start");
+		//Logging.log("name_method", "message");
 		System.out.println(PGNAME+"is start.");
 		
 		yz.logistic.print.sheets.StandardSheetFromDB drawer=new yz.logistic.print.sheets.StandardSheetFromDB();
@@ -68,9 +71,10 @@ public class MainPrintSheetFromDB {
 			System.out.println("block no "+blockno_s[i].getBlockNo());
 		}
 		//
-		yz.logistic.print.sheets.PrintStandardSheetFromDB sheet=new yz.logistic.print.sheets.PrintStandardSheetFromDB();
-		sheet.print(drawer, paraConnection, paraPrint, byBlock);
+		//yz.logistic.print.sheets.PrintStandardSheetFromDB sheet=new yz.logistic.print.sheets.PrintStandardSheetFromDB();
+		//sheet.print(drawer, paraConnection, paraPrint, byBlock);
 		System.out.println(PGNAME+"is end.");
+		logging.log("main", "end");
 	}
 
 }
