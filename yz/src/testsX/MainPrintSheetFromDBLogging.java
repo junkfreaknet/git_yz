@@ -1,18 +1,17 @@
 package testsX;
 
 public class MainPrintSheetFromDBLogging {
-	
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
 		//print B4 standard shet by a block
 		
 		final String PGNAME="MainPrintSheetFromDB";
-		
-		Logging logging=new Logging("MainPrintSheetFromDBLogging");
-		logging.log("main","start");
-		//Logging.log("name_method", "message");
-		System.out.println(PGNAME+"is start.");
+		//System.out.println(PGNAME+"is start.");
+		new testsX.LoggingX(PGNAME);
+		testsX.LoggingX.init(PGNAME);
+		testsX.LoggingX.logInfo("main", "start");
 		
 		yz.logistic.print.sheets.StandardSheetFromDB drawer=new yz.logistic.print.sheets.StandardSheetFromDB();
 
@@ -63,6 +62,7 @@ public class MainPrintSheetFromDBLogging {
 		byBlock.setBlockNo_s(blockno_s);
 		
 		//display parameters on console
+		/***
 		System.out.println("site "+byBlock.getSite().getSite());
 		System.out.println("shipping date "+byBlock.getShippingDate().getYYYYMMDD());
 		System.out.println("shipping number "+byBlock.getShippingNo().getShippingNo());
@@ -70,11 +70,13 @@ public class MainPrintSheetFromDBLogging {
 		for(int i=0;i<blockno_s.length;i++){
 			System.out.println("block no "+blockno_s[i].getBlockNo());
 		}
+		***/
 		//
-		//yz.logistic.print.sheets.PrintStandardSheetFromDB sheet=new yz.logistic.print.sheets.PrintStandardSheetFromDB();
-		//sheet.print(drawer, paraConnection, paraPrint, byBlock);
-		System.out.println(PGNAME+"is end.");
-		logging.log("main", "end");
+		yz.logistic.print.sheets.PrintStandardSheetFromDB sheet=new yz.logistic.print.sheets.PrintStandardSheetFromDB();
+		sheet.print(drawer, paraConnection, paraPrint, byBlock);
+		//System.out.println(PGNAME+"is end.");
+
+		testsX.LoggingX.logInfo("main","end");
 	}
 
 }

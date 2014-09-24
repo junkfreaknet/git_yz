@@ -3,11 +3,11 @@ package yz.logistic.print.sheets;
 public class PrintStandardSheetFromDB {
 
 	//print sheets by a block number
+	/***
 	public void print(yz.logistic.print.sheets.StandardSheetFromDB drawer,mycommons.db.connection.ParaConnection paraConnection,yz.logistic.print.sheets.PrintParameter paraPrintParameter,yz.logistic.print.sheets.parameters.ByBlock paraBlock){
-		/***
-		 EXPLANATION
-		 drawer...an object of sheet drawer 
-		***/
+
+		// EXPLANATION
+		// drawer...an object of sheet drawer 
 		
 		if(paraBlock.getBlockNo_s().length==mycommons.constants.Generic.CS_ZERO_AS_INT){
 			System.exit(mycommons.constants.Generic.CS_ZERO_AS_INT);
@@ -21,6 +21,28 @@ public class PrintStandardSheetFromDB {
 		}
 		
 	}
+	***/
+	//print with log
+	public void print(yz.logistic.print.sheets.StandardSheetFromDB drawer,mycommons.db.connection.ParaConnection paraConnection,yz.logistic.print.sheets.PrintParameter paraPrintParameter,yz.logistic.print.sheets.parameters.ByBlock paraBlock){
+		/***
+		 EXPLANATION
+		 drawer...an object of sheet drawer 
+		***/
+		
+		if(paraBlock.getBlockNo_s().length==mycommons.constants.Generic.CS_ZERO_AS_INT){
+			System.exit(mycommons.constants.Generic.CS_ZERO_AS_INT);
+		}	
+		
+		//print sheet by a block
+		for(int i=0;i<paraBlock.getBlockNo_s().length;i++){
+			//init db db connection and initialize recordset
+			String logBuff="start printing block "+paraBlock.getBlockNo_s()[i].getBlockNo()+".";
+			testsX.LoggingX.logInfo(this.getClass().getName()+".print", logBuff);
+			drawer.initConnection(paraConnection);
+			this.printCore(drawer, paraPrintParameter,paraBlock,paraBlock.getBlockNo_s()[i]);
+		}
+		
+	}	
 	
 	private void printCore(yz.logistic.print.sheets.StandardSheetFromDB drawer,yz.logistic.print.sheets.PrintParameter paraPrintParameter,yz.logistic.print.sheets.parameters.ByBlock byBlock,yz.logistic.generic.BlockNo blockno){
 		
