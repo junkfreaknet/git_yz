@@ -5,11 +5,12 @@ public class MainPrintSheetFromDB {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		//print B4 standard shet by a block
+		//print B4 standard sheet by a block
 		
 		final String PGNAME="MainPrintSheetFromDB";
 		
-		System.out.println(PGNAME+"is start.");
+		java.util.logging.Logger logger=java.util.logging.Logger.getLogger("logger");
+		logger.info("start "+PGNAME+".");
 		
 		yz.logistic.print.sheets.StandardSheetFromDB drawer=new yz.logistic.print.sheets.StandardSheetFromDB();
 
@@ -60,17 +61,23 @@ public class MainPrintSheetFromDB {
 		byBlock.setBlockNo_s(blockno_s);
 		
 		//display parameters on console
-		System.out.println("site "+byBlock.getSite().getSite());
-		System.out.println("shipping date "+byBlock.getShippingDate().getYYYYMMDD());
-		System.out.println("shipping number "+byBlock.getShippingNo().getShippingNo());
+		//System.out.println("site "+byBlock.getSite().getSite());
+		//System.out.println("shipping date "+byBlock.getShippingDate().getYYYYMMDD());
+		//System.out.println("shipping number "+byBlock.getShippingNo().getShippingNo());
+		String buff;
+		buff="site="+byBlock.getSite().getSite()+":";
+		buff=buff+"shipping date="+byBlock.getShippingDate().getYYYYMMDD()+":";
+		buff=buff+"shipping number="+byBlock.getShippingNo().getShippingNo();
+		logger.info(buff);
 		blockno_s=byBlock.getBlockNo_s();
 		for(int i=0;i<blockno_s.length;i++){
-			System.out.println("block no "+blockno_s[i].getBlockNo());
+			//System.out.println("block no "+blockno_s[i].getBlockNo());
+			//logger.info("block no "+blockno_s[i].getBlockNo());
 		}
 		//
 		yz.logistic.print.sheets.PrintStandardSheetFromDB sheet=new yz.logistic.print.sheets.PrintStandardSheetFromDB();
 		sheet.print(drawer, paraConnection, paraPrint, byBlock);
-		System.out.println(PGNAME+"is end.");
+		logger.info("end "+PGNAME+".");
 	}
 
 }

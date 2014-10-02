@@ -37,7 +37,9 @@ public class PrintStandardSheetFromDB {
 		for(int i=0;i<paraBlock.getBlockNo_s().length;i++){
 			//init db db connection and initialize recordset
 			String logBuff="start printing block "+paraBlock.getBlockNo_s()[i].getBlockNo()+".";
-			testsX.LoggingX.logInfo(this.getClass().getName()+".print", logBuff);
+			//testsX.LoggingX.logInfo(this.getClass().getName()+".print", logBuff);
+			java.util.logging.Logger logger=java.util.logging.Logger.getLogger("logger");
+			logger.info(logBuff);
 			drawer.initConnection(paraConnection);
 			this.printCore(drawer, paraPrintParameter,paraBlock,paraBlock.getBlockNo_s()[i]);
 		}

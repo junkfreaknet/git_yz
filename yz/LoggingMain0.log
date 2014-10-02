@@ -1,0 +1,28 @@
+Sep 30, 2014 3:14:05 AM log.MainLog3 <clinit>
+CONFIG: ログ設定: LogManagerを設定しました。
+Sep 30, 2014 3:14:05 AM log.MainLog3 main
+詳細レベル(低): fine
+Sep 30, 2014 3:14:05 AM log.MainLog3 main
+CONFIG: config
+Sep 30, 2014 3:14:05 AM log.MainLog3 main
+情報: info
+Sep 30, 2014 3:14:05 AM log.MainLog3 main
+WARNING: warnig
+Sep 30, 2014 3:14:05 AM log.MainLog3 main
+SEVERE: sever
+Sep 30, 2014 3:37:44 AM logExperiment.LoggingMain main
+情報: start program.
+Sep 30, 2014 3:37:44 AM logExperiment.Gen01 <init>
+情報: Create Gen01
+Sep 30, 2014 3:37:44 AM logExperiment.Gen02 <init>
+情報: Create Gen02.
+Sep 30, 2014 3:37:44 AM logExperiment.LoggingMain main
+情報: end program.
+Sep 30, 2014 3:39:41 AM logExperiment.LoggingMain main
+情報: start program.
+Sep 30, 2014 3:39:41 AM logExperiment.Gen01 <init>
+情報: Create Gen01
+Sep 30, 2014 3:39:41 AM logExperiment.Gen02 <init>
+情報: Create Gen02.
+Sep 30, 2014 3:39:41 AM logExperiment.LoggingMain main
+情報: end program.
