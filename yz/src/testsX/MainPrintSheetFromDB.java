@@ -9,9 +9,9 @@ public class MainPrintSheetFromDB {
 		
 		final String PGNAME="MainPrintSheetFromDB";
 		
-		java.util.logging.Logger logger=java.util.logging.Logger.getLogger("logger");
-		logger.info("start "+PGNAME+".");
-		
+		//java.util.logging.Logger logger=java.util.logging.Logger.getLogger("logger");
+		//logger.info("start "+PGNAME+".");
+		mycommons.logging.Logging.info("start "+PGNAME+".");
 		yz.logistic.print.sheets.StandardSheetFromDB drawer=new yz.logistic.print.sheets.StandardSheetFromDB();
 
 		mycommons.db.connection.ParaConnection paraConnection=new mycommons.db.connection.ParaConnection();
@@ -68,7 +68,8 @@ public class MainPrintSheetFromDB {
 		buff="site="+byBlock.getSite().getSite()+":";
 		buff=buff+"shipping date="+byBlock.getShippingDate().getYYYYMMDD()+":";
 		buff=buff+"shipping number="+byBlock.getShippingNo().getShippingNo();
-		logger.info(buff);
+		//logger.info(buff);
+		mycommons.logging.Logging.info(buff);
 		blockno_s=byBlock.getBlockNo_s();
 		for(int i=0;i<blockno_s.length;i++){
 			//System.out.println("block no "+blockno_s[i].getBlockNo());
@@ -77,7 +78,8 @@ public class MainPrintSheetFromDB {
 		//
 		yz.logistic.print.sheets.PrintStandardSheetFromDB sheet=new yz.logistic.print.sheets.PrintStandardSheetFromDB();
 		sheet.print(drawer, paraConnection, paraPrint, byBlock);
-		logger.info("end "+PGNAME+".");
+		//logger.info("end "+PGNAME+".");
+		mycommons.logging.Logging.info("end "+PGNAME+".");
 	}
 
 }

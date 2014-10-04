@@ -22,7 +22,8 @@ public class PrintStandardSheetFromDB {
 		
 	}
 	***/
-	//print with log
+
+	//print sheets by a block
 	public void print(yz.logistic.print.sheets.StandardSheetFromDB drawer,mycommons.db.connection.ParaConnection paraConnection,yz.logistic.print.sheets.PrintParameter paraPrintParameter,yz.logistic.print.sheets.parameters.ByBlock paraBlock){
 		/***
 		 EXPLANATION
@@ -37,14 +38,14 @@ public class PrintStandardSheetFromDB {
 		for(int i=0;i<paraBlock.getBlockNo_s().length;i++){
 			//init db db connection and initialize recordset
 			String logBuff="start printing block "+paraBlock.getBlockNo_s()[i].getBlockNo()+".";
-			//testsX.LoggingX.logInfo(this.getClass().getName()+".print", logBuff);
-			java.util.logging.Logger logger=java.util.logging.Logger.getLogger("logger");
-			logger.info(logBuff);
+			//java.util.logging.Logger logger=java.util.logging.Logger.getLogger("logger");
+			//logger.info(logBuff);
+			mycommons.logging.Logging.info(logBuff);
 			drawer.initConnection(paraConnection);
 			this.printCore(drawer, paraPrintParameter,paraBlock,paraBlock.getBlockNo_s()[i]);
 		}
 		
-	}	
+	}
 	
 	private void printCore(yz.logistic.print.sheets.StandardSheetFromDB drawer,yz.logistic.print.sheets.PrintParameter paraPrintParameter,yz.logistic.print.sheets.parameters.ByBlock byBlock,yz.logistic.generic.BlockNo blockno){
 		
@@ -70,11 +71,15 @@ public class PrintStandardSheetFromDB {
 			try{
 				docPrintJob.print(simpledoc, attributeSet);
 			}catch(Exception e){
-				System.out.println("error:doc print job ");
+				//System.out.println("error:doc print job ");
+				//java.util.logging.Logger logger=java.util.logging.Logger.getLogger("logger");
+				//logger.severe("error:doc print job ");
+				mycommons.logging.Logging.severe("error:doc print job ");
 				System.exit(mycommons.constants.System.CS_EXIT_ERROR);
 			}
 		}else{
-			System.out.println("goto next block");
+			//System.out.println("goto next block");
+			mycommons.logging.Logging.info("goto next block");
 		}
 		
 	}
@@ -137,7 +142,8 @@ public class PrintStandardSheetFromDB {
 		
 		javax.print.PrintService[] printService_s=javax.print.PrintServiceLookup.lookupPrintServices(docFlavor, attributeSet);
 		if(printService_s.length==mycommons.constants.Generic.CS_ARRAY_HAS_NO_ELEMENT){
-			System.out.println("we have no printer fits your condition.");
+			//System.out.println("we have no printer fits your condition.");
+			mycommons.logging.Logging.severe("we have no printer fits your condition.");
 			System.exit(mycommons.constants.System.CS_EXIT_ERROR);
 		}
 		//

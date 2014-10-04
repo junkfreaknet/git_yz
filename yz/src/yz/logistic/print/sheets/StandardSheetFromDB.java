@@ -34,8 +34,11 @@ public class StandardSheetFromDB implements java.awt.print.Printable{
 			
 		}catch(Exception e){
 			
-			System.out.println(e.toString());
-			System.out.println("Connecting DB is failed.");
+			//System.out.println(e.toString());
+			//System.out.println("Connecting DB is failed.");
+			mycommons.logging.Logging.severe(e.toString());
+			mycommons.logging.Logging.severe("Connecting DB is failed.");
+			
 			//at last...failed
 			StatusCreate=false;
 		}		
@@ -56,8 +59,10 @@ public class StandardSheetFromDB implements java.awt.print.Printable{
 		try{
 			this.rst=this.stmnt.executeQuery(in_sql.toString());
 		}catch(Exception e){
-			System.out.println("init record set is failed.");
-			System.out.println(e.toString());
+			//System.out.println("init record set is failed.");
+			//System.out.println(e.toString());
+			mycommons.logging.Logging.severe("init record set is failed.");
+			mycommons.logging.Logging.severe(e.toString());
 			rv=false;
 		}
 		return rv;
@@ -85,8 +90,10 @@ public class StandardSheetFromDB implements java.awt.print.Printable{
 		}catch(Exception e){
 			
 			StatusRead=false;
-			System.out.println("Reading table is failed.");
-			System.out.println(e.toString());
+			//System.out.println("Reading table is failed.");
+			//System.out.println(e.toString());
+			mycommons.logging.Logging.severe("Reading table is failed.");
+			mycommons.logging.Logging.severe(e.toString());
 			//
 			return this.NO_SUCH_PAGE;
 		}
