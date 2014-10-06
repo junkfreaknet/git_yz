@@ -12,8 +12,11 @@ public class MainPrintSheetFromDB {
 		//java.util.logging.Logger logger=java.util.logging.Logger.getLogger("logger");
 		//logger.info("start "+PGNAME+".");
 		mycommons.logging.Logging.info("start "+PGNAME+".");
+
+		//drawer
 		yz.logistic.print.sheets.StandardSheetFromDB drawer=new yz.logistic.print.sheets.StandardSheetFromDB();
 
+		//db connecting paramaters
 		mycommons.db.connection.ParaConnection paraConnection=new mycommons.db.connection.ParaConnection();
 		paraConnection.setForName(new mycommons.db.connection.ForName(mycommons.constants.DB.MS_SQL_SERVER_FOR_NAME));
 		paraConnection.setServer(new mycommons.db.connection.Server(mycommons.constants.DB.MS_SQL_SERVER_SERVER_NAME));
@@ -24,6 +27,7 @@ public class MainPrintSheetFromDB {
 		paraConnection.setUser(new mycommons.db.connection.User("sa"));
 		paraConnection.setPassWord(new mycommons.db.connection.Password("sanoriyuki"));
 
+		//print paramater
 		yz.logistic.print.sheets.PrintParameter paraPrint=new yz.logistic.print.sheets.PrintParameter();
 		paraPrint.setPrinter(new mycommons.print.Printer("Bullzip PDF Printer"));
 		paraPrint.setPaperOrientation(new mycommons.print.PaperOrientation(mycommons.print.Constants.PAPERORIENTATION_LANDSCAPE));
