@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<body>
+	<connection host="127.0.0.1" instance="SQLEXPRESS" port="1433" database="TESTDBJAVA" user="sa" password="sanoriyuki"></connection>
+	<tables>
+		<table name="dbo.tbl_outfile" inner_name="tblDataSource">
+			<fields>
+				<field></field></fields></table>
+		<table></table></tables></body>
