@@ -4,7 +4,8 @@ public class MainPrintSheetFromDB {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		//a modefication occured 2014/10/10(fri) 18:00
+		
 		//print B4 standard sheet by a block
 		
 		final String PGNAME="MainPrintSheetFromDB";
