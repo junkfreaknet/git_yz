@@ -4,5 +4,9 @@
 	<tables>
 		<table name="dbo.tbl_outfile" inner_name="tblDataSource">
 			<fields>
-				<field></field></fields></table>
-		<table></table></tables></body>
+				<field name="jigyo_cd" innerName="SiteCD"></field>
+				<field name="syu_ymd" innerName="ShippingDate"></field>
+				<field name="bin_kb" innerName="ShippingNo"></field>
+				<field name="haubun_mad" innerName="BlockNo"></field>
+				<field name="haiso_course" innerName="CourseNo"></field>
+				<field name="haiso_order" innerName="CoureSeq"></field></fields></table></tables></body>
