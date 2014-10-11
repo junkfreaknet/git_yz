@@ -9,7 +9,4 @@
 				<field name="bin_kb" innerName="ShippingNo"></field>
 				<field name="haubun_mad" innerName="BlockNo"></field>
 				<field name="haiso_course" innerName="CourseNo"></field>
-				<field name="haiso_order" innerName="CoureSeq"></field></fields></table>
-		<table name="mst_env0409" inner_name="tblCourseInfomation">
-			<fields>
-				<field name="sagyo_kb" innerName="OpeCD"></field></fields></table></tables></body>
+				<field name="haiso_order" innerName="CoureSeq"></field></fields></table></tables></body>

@@ -11,7 +11,8 @@ public class MainTestXML {
 		
 		try{
 			javax.xml.parsers.DocumentBuilder builder=factory.newDocumentBuilder();
-			String uri="myfile.xml";
+			String uri="DBSetting.xml";
+			//String uri="myfile.xml";
 			
 			org.w3c.dom.Node root=builder.parse(uri);
 			if(root.getNodeType()==org.w3c.dom.Node.DOCUMENT_NODE){
