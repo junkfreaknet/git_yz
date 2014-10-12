@@ -31,6 +31,8 @@ public class MainTestXML {
 				System.out.println("can't get second level child.");
 			}else{
 				System.out.println("second child is "+secondLevel.getNodeName()+".");
+				//org.w3c.dom.Node thirdLevel=secondLevel.getFirstChild();
+				//System.out.println("the third chile is "+thirdLevel.getNodeName());
 			}
 			
 			
