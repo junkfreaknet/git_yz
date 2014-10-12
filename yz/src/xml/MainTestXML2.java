@@ -14,9 +14,15 @@ public class MainTestXML2 {
 			String uri="DBSetting.xml";
 			//String uri="myfile.xml";
 			
-			org.w3c.dom.Node root=builder.parse(uri);
-			if(root.getNodeType()==org.w3c.dom.Node.DOCUMENT_NODE){
-				System.out.println("root is document.");
+			org.w3c.dom.Document doc=builder.parse(uri);
+			if(doc.getNodeType()==org.w3c.dom.Node.DOCUMENT_NODE){
+				System.out.println("first node is document.");
+			}
+			System.out.println("doc name is "+doc.getNodeName());
+			org.w3c.dom.NodeList children=doc.getChildNodes();
+			for(int i=0;i<children.getLength();i++){
+				org.w3c.dom.Node child=children.item(i);
+				System.out.println(""+child.getNodeName());
 			}
 			/***
 			org.w3c.dom.Document document=(org.w3c.dom.Document)root;
