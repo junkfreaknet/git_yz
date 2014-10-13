@@ -20,10 +20,8 @@ public class MainTestXML2 {
 			}
 			System.out.println("doc name is "+doc.getNodeName());
 			org.w3c.dom.NodeList children=doc.getChildNodes();
-			for(int i=0;i<children.getLength();i++){
-				org.w3c.dom.Node child=children.item(i);
-				System.out.println(""+child.getNodeName());
-			}
+
+			nestChild(children);
 			/***
 			org.w3c.dom.Document document=(org.w3c.dom.Document)root;
 			org.w3c.dom.Element element=document.getDocumentElement();
@@ -53,6 +51,28 @@ public class MainTestXML2 {
 		}
 		
 		System.out.println("*****end MainTestXML.*****");
+	}
+	
+	static private void nestChild(org.w3c.dom.NodeList children){
+		for(int i=0;i<children.getLength();i++){
+			org.w3c.dom.Node child=children.item(i);
+			System.out.println("nesting "+child.getNodeName());
+			String name="";
+			String innerName="";
+			String host="";
+			String instance="";
+			String port="";
+			String database="";
+			String user="";
+			String password="";
+			org.w3c.dom.Element element=(org.w3c.dom.Element)child;
+			name=element.getAttribute("name");
+			System.out.println(name);
+			if(child.hasChildNodes()){
+				org.w3c.dom.NodeList nodeList=child.getChildNodes();
+				nestChild(nodeList);
+			}
+		}		
 	}
 
 }
