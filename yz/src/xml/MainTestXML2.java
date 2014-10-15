@@ -67,10 +67,21 @@ public class MainTestXML2 {
 			String password="";
 			org.w3c.dom.Element element=(org.w3c.dom.Element)child;
 			name=element.getAttribute("name");
-			System.out.println(name);
+			System.out.println("name is "+name);
 			if(child.hasChildNodes()){
+				System.out.println("child has a child.");
 				org.w3c.dom.NodeList nodeList=child.getChildNodes();
-				nestChild(nodeList);
+
+				if(nodeList.getLength()==0){
+					System.out.println("nodeList has no children.");
+				}else{
+					
+					System.out.println(nodeList.getLength());
+					System.out.println("nextChild(xxx) again.");
+					nestChild(nodeList);
+				}
+			}else{
+				System.out.println("child doesn't a child.");
 			}
 		}		
 	}
