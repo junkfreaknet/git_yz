@@ -2,7 +2,7 @@ package xml;
 
 import java.security.KeyStore.Builder;
 
-public class MainTestXML2 {
+public class MainTestXML4 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -15,13 +15,21 @@ public class MainTestXML2 {
 			//String uri="myfile.xml";
 			
 			org.w3c.dom.Document doc=builder.parse(uri);
+			org.w3c.dom.NodeList docChildren=doc.getChildNodes();
+			System.out.println(docChildren.getLength());
+			
+			for(int i=0;i<docChildren.getLength();i++){
+				org.w3c.dom.Node child=docChildren.item(i);
+				System.out.println(child.getNodeName());
+			}
+			/***
 			if(doc.getNodeType()==org.w3c.dom.Node.DOCUMENT_NODE){
 				System.out.println("first node is document.");
 			}
 			System.out.println("doc name is "+doc.getNodeName());
 			org.w3c.dom.NodeList children=doc.getChildNodes();
-
-			nestChild(children);
+			***/
+			//nestChild(children);
 			/***
 			org.w3c.dom.Document document=(org.w3c.dom.Document)root;
 			org.w3c.dom.Element element=document.getDocumentElement();
