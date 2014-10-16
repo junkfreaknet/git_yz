@@ -16,11 +16,17 @@ public class MainTestXML4 {
 			
 			org.w3c.dom.Document doc=builder.parse(uri);
 			org.w3c.dom.NodeList docChildren=doc.getChildNodes();
-			System.out.println(docChildren.getLength());
-			
+			System.out.println("document has "+docChildren.getLength()+" nodes.");
 			for(int i=0;i<docChildren.getLength();i++){
 				org.w3c.dom.Node child=docChildren.item(i);
-				System.out.println(child.getNodeName());
+				System.out.println("	"+child.getNodeName());
+				if(child.hasChildNodes()){
+					org.w3c.dom.NodeList nodeList=child.getChildNodes();
+					for(int ix=0;ix<nodeList.getLength();ix++){
+						org.w3c.dom.Node nodeChild=nodeList.item(ix);
+						System.out.println("		"+nodeChild.getNodeName());
+					}
+				}
 			}
 			/***
 			if(doc.getNodeType()==org.w3c.dom.Node.DOCUMENT_NODE){
