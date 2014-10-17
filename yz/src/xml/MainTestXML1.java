@@ -2,7 +2,7 @@ package xml;
 
 import java.security.KeyStore.Builder;
 
-public class MainTestXML {
+public class MainTestXML1 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
