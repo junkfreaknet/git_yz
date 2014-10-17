@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<body>
+	<connection>
+		<host>127.0.0.1</host>
+		<server>sqlexpress</server>
+		<database>DBTest</database>
+		<user>sa</user>
+		<password>sanoriyuki</password></connection>
+	<tables>
+		<table>
+			<name>dbo.tbl_outfile</name>
+			<inner_name>tblDataSource</inner_name>
+			<fields>
+				<field>
+					<name>SiteCD</name>
+					<inner_name>jigyo_cd</inner_name></field></fields></table>
+		<table>
+			<name>dbo.mst_env0409</name>
+			<inner_name>tblCourseInformation</inner_name>
+			<fields>
+				<field>
+					<name>sagyo_kb</name>
+					<inner_name>opeCD</inner_name></field></fields></table></tables></body>
