@@ -37,8 +37,10 @@ public class MainSAXXML {
 
 }
 class myHandler extends org.xml.sax.helpers.DefaultHandler{
+	
+	int cntElement=0;
 	String HANDLER="MyHandler";
-	String logBuff;
+	//String logBuff;
 	public void startDocument() throws org.xml.sax.SAXException{
 		java.util.logging.Logger logger=java.util.logging.Logger.getLogger(this.HANDLER);
 		logger.info("start document.");
@@ -49,15 +51,18 @@ class myHandler extends org.xml.sax.helpers.DefaultHandler{
 	}
 	public void startElement(String uri,String localName,String qName,org.xml.sax.Attributes attr) throws org.xml.sax.SAXException{
 		java.util.logging.Logger logger=java.util.logging.Logger.getLogger(this.HANDLER);
-		logger.info("start "+qName+".");
+		String logBuff="";
+		this.cntElement=this.cntElement+1;
+		logger.info(this.cntElement+" start "+qName+".");
 		//logBuff=uri+","+localName+","+qName;
-		logger.info(logBuff);
+		//logger.info(logBuff);
 		for(int i=0;i<attr.getLength();i++){
 			logBuff=attr.getQName(i);
 			logBuff=logBuff+":"+"\""+attr.getValue(i)+"\"";
+			logBuff=Integer.toString(i)+" "+logBuff;
 			logger.info(logBuff);
 		}
-		
+
 	}
 	public void endElement(String uri,String localName,String qName) throws org.xml.sax.SAXException{
 		java.util.logging.Logger logger=java.util.logging.Logger.getLogger(this.HANDLER);

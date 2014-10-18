@@ -2,21 +2,17 @@
 <body>
 	<connection host="127.0.0.1" server="sqlexpress" database="DBTEST" user="sa" password="sanoriyuki"></connection>
 	<tables>
-		<table>
-			<name>dbo.tbl_outfile</name>
-			<inner_name>tblDataSource</inner_name>
+		<table name="dbo.tbl_outfile" inner_name="tblDataSource">
 			<fields>
-				<field>
-					<name>SiteCD</name>
-					<inner_name>jigyo_cd</inner_name></field>
+				<field name="SiteCD" inner_name="jigyo_cd">
+				</field>
 				<field name="ShippingDate" inner_name="syu_ymd"></field>
 				<field name="ShppingNo" inner_name="bin_kb"></field>
 				<field name="OpeCD" inner_name="sagyo_kb"></field>
 				<field name="BlockNo" inner_name="haibun_mad"></field></fields></table>
-		<table>
-			<name>dbo.mst_env0409</name>
-			<inner_name>tblCourseInformation</inner_name>
+		<table name="dbo.mst_env0409" inner_name="tblCourseInformation">
 			<fields>
-				<field>
-					<name>sagyo_kb</name>
-					<inner_name>opeCD</inner_name></field></fields></table></tables></body>
+				<field name="sagyo_kb" inner_name="OpeCD">
+				</field>
+			</fields>
+		</table></tables></body>
