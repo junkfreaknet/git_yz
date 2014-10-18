@@ -5,7 +5,7 @@ public class MainSAXXML {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		String PGNAME="saxXML";
-		String XMLFILE="DBSetting.xml";
+		String XMLFILE="DBSetting2.xml";
 		String logBuff;
 		java.util.logging.Logger logger=java.util.logging.Logger.getLogger(PGNAME);
 		try{
@@ -49,8 +49,8 @@ class myHandler extends org.xml.sax.helpers.DefaultHandler{
 	}
 	public void startElement(String uri,String localName,String qName,org.xml.sax.Attributes attr) throws org.xml.sax.SAXException{
 		java.util.logging.Logger logger=java.util.logging.Logger.getLogger(this.HANDLER);
-		logger.info(qName);
-		logBuff=uri+","+localName+","+qName;
+		logger.info("start "+qName+".");
+		//logBuff=uri+","+localName+","+qName;
 		logger.info(logBuff);
 		for(int i=0;i<attr.getLength();i++){
 			logBuff=attr.getQName(i);
@@ -59,10 +59,25 @@ class myHandler extends org.xml.sax.helpers.DefaultHandler{
 		}
 		
 	}
+	public void endElement(String uri,String localName,String qName) throws org.xml.sax.SAXException{
+		java.util.logging.Logger logger=java.util.logging.Logger.getLogger(this.HANDLER);
+		logger.info("end "+qName+".");
+		//logBuff=uri+","+localName+","+qName;
+		/***
+		logger.info(logBuff);
+		for(int i=0;i<attr.getLength();i++){
+			logBuff=attr.getQName(i);
+			logBuff=logBuff+":"+"\""+attr.getValue(i)+"\"";
+			logger.info(logBuff);
+		}
+		***/
+	}	
+	/***
 	public void skippedEntity(String name) throws org.xml.sax.SAXException{
 		java.util.logging.Logger logger=java.util.logging.Logger.getLogger(this.HANDLER);
 		logger.info("skipped "+name);
 	}
+	***/
 	/***
 	public void characters(char[] ch,int start,int length) throws org.xml.sax.SAXException{
 		java.util.logging.Logger logger=java.util.logging.Logger.getLogger(this.HANDLER);
