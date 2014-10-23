@@ -32,4 +32,25 @@ public class connectionToDB {
 	public  static mycommons.db.connection.Instance getInstance(){
 		return new mycommons.db.connection.Instance(instance);
 	}
+	//DATABASE
+	public static void setDatabase(mycommons.db.connection.DataBase in_database){
+		database=in_database.toStringName();
+	}
+	public static mycommons.db.connection.DataBase getDatabase(){
+		return new mycommons.db.connection.DataBase(database);
+	}
+	//USER
+	public static void setUser(mycommons.db.connection.User in_user){
+		user=in_user.toStringName();
+	}
+	public static mycommons.db.connection.User getUser(){
+		return new mycommons.db.connection.User(user);
+	}
+	//PASSWORD
+	public static void setPassword(mycommons.db.connection.Password in_password){
+		password=in_password.toStringValue();
+	}
+	public static mycommons.db.connection.Password getPassWord(){
+		return new mycommons.db.connection.Password(password);
+	}
 }
