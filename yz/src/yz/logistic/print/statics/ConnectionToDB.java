@@ -1,6 +1,6 @@
 package yz.logistic.print.statics;
 
-public class connectionToDB {
+public class ConnectionToDB {
 
 	static String host;
 	static String server;
