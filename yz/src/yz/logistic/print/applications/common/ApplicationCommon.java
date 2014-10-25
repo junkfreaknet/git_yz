@@ -1,13 +1,16 @@
-package yz.logistic.print.statics;
-
-import java.io.FileInputStream;
-
+package yz.logistic.print.applications.common;
+//*************************************************************************
+//***** APPLICATION COMMOM PROCEDURES
+//***** &
+//*****	APPLICATION GLOBAL VARiABLES
+//*****
+//*************************************************************************
 public class ApplicationCommon {
 
 	//name of application
 	static String pgName;
 	//seting file name
-	static final String settingFileName="Setting.properties";
+	final String settingFileName="Setting.properties";
 	//
 	public static void startUP(){
 		
@@ -16,7 +19,11 @@ public class ApplicationCommon {
 	public static void getParamatersConnectToDatabase(){
 		
 		java.util.Properties properties=new java.util.Properties();
-
+		try{
+			
+		}catch(Exception e){
+			
+		}
 	}
 	//private method 
 	static java.io.InputStream getSettingFile(){
