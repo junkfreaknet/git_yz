@@ -9,6 +9,9 @@ public class ApplicationCommon {
 	//seting file name
 	static final String settingFileName="Setting.properties";
 	//
+	public static void startUP(){
+		
+	}
 	//get paramaters for connecting to database
 	public static void getParamatersConnectToDatabase(){
 		
