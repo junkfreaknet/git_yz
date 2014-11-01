@@ -8,11 +8,14 @@ package yz.logistic.print.applications.common;
 public class ApplicationCommon {
 
 	//name of application
-	static String pgName;
+	static String AplicationName;
 	//seting file name
-	final String settingFileName="Setting.properties";
+	static final String settingFileName="Setting.properties";
 	//
 	public static void startUP(){
+		
+	}
+	public static void end(){
 		
 	}
 	//get paramaters for connecting to database
