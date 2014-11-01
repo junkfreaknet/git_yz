@@ -11,12 +11,19 @@ public class ApplicationCommon {
 	static String AplicationName;
 	//seting file name
 	static final String settingFileName="Setting.properties";
-	//
-	public static void startUP(){
+	//*****
+	//start and end common
+	public static void startUP(String pgName){
 		
+		setAplicationName(pgName);
 	}
 	public static void end(){
 		
+	}
+	//*****
+	//set application name
+	static void setAplicationName(String pgName){
+		AplicationName=pgName;
 	}
 	//get paramaters for connecting to database
 	public static void getParamatersConnectToDatabase(){
@@ -28,7 +35,12 @@ public class ApplicationCommon {
 			
 		}
 	}
-	//private method 
+	//get fields
+	public static void getFieldsOfDatabaae(){
+		
+	}
+	//private method
+	/***
 	static java.io.InputStream getSettingFile(){
 		java.io.InputStream inputStream=null;
 		try{
@@ -41,4 +53,5 @@ public class ApplicationCommon {
 			return inputStream;
 		}
 	}
+	***/
 }
