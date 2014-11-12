@@ -10,8 +10,9 @@ public class CommonApplication extends mycommons.applications.commons.CommonsApp
 	//seting file name
 	final String settingFileName="Setting.properties";
 
-	public void CommonApplication(String pgName){
+	public CommonApplication(String pgName){
 		super(pgName);
+
 	}
 	//get paramaters for connecting to database
 	public static void getParamatersConnectToDatabase(){
