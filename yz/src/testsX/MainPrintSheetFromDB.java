@@ -8,9 +8,10 @@ public class MainPrintSheetFromDB {
 		
 		//print B4 standard sheet by a block
 		
-		final String PGNAME="Print Sheet Text x FromD B";
+		final String PGNAME="Print Sheet Text FromDB";
 		
-		yz.logistic.print.applications.common.CommonApplication.startUP(PGNAME);
+		yz.logistic.print.applications.common.CommonsApplication cmmnApplication=new yz.logistic.print.applications.common.CommonsApplication(PGNAME);
+		cmmnApplication.start();
 		
 		//java.util.logging.Logger logger=java.util.logging.Logger.getLogger("logger");
 		//logger.info("start "+PGNAME+".");

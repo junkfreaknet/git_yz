@@ -5,15 +5,31 @@ package yz.logistic.print.applications.common;
 //*****	APPLICATION GLOBAL VARiABLES
 //*****
 //*************************************************************************
-public class CommonApplication extends mycommons.applications.commons.CommonsApplication{
+public class CommonsApplication implements mycommons.applications.commons.CommonsApplication{
 
 	//seting file name
 	final String settingFileName="Setting.properties";
 
-	public CommonApplication(String pgName){
-		super(pgName);
-
+	String AppName;
+	
+	public CommonsApplication(String pgName){
+	
+		this.AppName=pgName;
+	
 	}
+	
+	public void start(){
+		
+		mycommons.logging.Logging.info("start "+this.AppName);
+	}
+	public void start(String pgName){
+		
+		this.AppName=pgName;
+		this.start();
+	
+	}
+	public void end(){}
+	public void run(){}
 	//get paramaters for connecting to database
 	public static void getParamatersConnectToDatabase(){
 		
