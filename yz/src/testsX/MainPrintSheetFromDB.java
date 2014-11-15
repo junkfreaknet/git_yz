@@ -8,19 +8,21 @@ public class MainPrintSheetFromDB {
 		
 		//print B4 standard sheet by a block
 		
-		final String PGNAME="Print Sheet Text FromDB";
+		final String PGNAME="Print B4 standard haibun Sheet From DB";
 		
 		yz.logistic.print.applications.common.CommonsApplication cmmnApplication=new yz.logistic.print.applications.common.CommonsApplication(PGNAME);
 		cmmnApplication.start();
 		
 		//java.util.logging.Logger logger=java.util.logging.Logger.getLogger("logger");
 		//logger.info("start "+PGNAME+".");
-		mycommons.logging.Logging.info("start "+PGNAME+".");
+		//mycommons.logging.Logging.info("start "+PGNAME+".");
 
 		//drawer
 		yz.logistic.print.sheets.StandardSheetFromDB drawer=new yz.logistic.print.sheets.StandardSheetFromDB();
 
 		//db connecting paramaters
+		mycommons.db.connection.ParaConnection paraConnection=cmmnApplication.setParaConnectToDatabase();
+		/***
 		mycommons.db.connection.ParaConnection paraConnection=new mycommons.db.connection.ParaConnection();
 		paraConnection.setForName(new mycommons.db.connection.ForName(mycommons.constants.DB.MS_SQL_SERVER_FOR_NAME));
 		paraConnection.setServer(new mycommons.db.connection.Server(mycommons.constants.DB.MS_SQL_SERVER_SERVER_NAME));
@@ -30,7 +32,7 @@ public class MainPrintSheetFromDB {
 		paraConnection.setDataBase(new mycommons.db.connection.DataBase("TESTDBJAVA"));
 		paraConnection.setUser(new mycommons.db.connection.User("sa"));
 		paraConnection.setPassWord(new mycommons.db.connection.Password("sanoriyuki"));
-
+		***/
 		//print paramater
 		yz.logistic.print.sheets.PrintParameter paraPrint=new yz.logistic.print.sheets.PrintParameter();
 		paraPrint.setPrinter(new mycommons.print.Printer("Bullzip PDF Printer"));

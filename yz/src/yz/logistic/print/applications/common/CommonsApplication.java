@@ -9,54 +9,64 @@ public class CommonsApplication implements mycommons.applications.commons.Common
 
 	//seting file name
 	final String settingFileName="Setting.properties";
+	
+	//type of db
+	final String DBSourceProperty="DBSource";	
+	final String DBSourcePropertyFile="DBSource.properties";
+	final String DBDistProperty="DBDist";
+	final String DBDistPropertyFile="DBDist.properties";
+	final String DBWorkProperty="DBWork";
+	final String DBWorkPropertyFile="DBWork.properties";
 
-	String AppName;
+	private String AppName;
 	
 	public CommonsApplication(String pgName){
-	
-		this.AppName=pgName;
-	
-	}
-	
-	public void start(){
 		
-		mycommons.logging.Logging.info("start "+this.AppName);
+		this.setApplicationName(pgName);
+	
 	}
+	
 	public void start(String pgName){
 		
 		this.AppName=pgName;
 		this.start();
 	
 	}
-	public void end(){}
+	public void start(){
+		
+		mycommons.logging.Logging.info("start "+this.AppName);
+	}
+	public void end(){
+		
+		mycommons.logging.Logging.info("end "+this.AppName);
+	
+	}
+	
 	public void run(){}
+	
+	//misc
+	public void setApplicationName(String pgName){
+		this.AppName=pgName;
+	}
 	//get paramaters for connecting to database
-	public static void getParamatersConnectToDatabase(){
+	
+	public mycommons.db.connection.ParaConnection setParaConnectToDatabase(){
 		
-		java.util.Properties properties=new java.util.Properties();
-		try{
-			
-		}catch(Exception e){
-			
-		}
+		mycommons.db.connection.ParaConnection rv=this.setParaConnectToDatabase(new mycommons.routines.file.Filename(settingFileName));
+		return rv;
 	}
-	//get fields
-	public static void getFieldsOfDatabaae(){
+	
+	public mycommons.db.connection.ParaConnection setParaConnectToDatabase(mycommons.routines.file.Filename settingFile){
 		
+		mycommons.db.connection.ParaConnection rv=new mycommons.db.connection.ParaConnection();
+		return rv;
 	}
-	//private method
-	/***
-	static java.io.InputStream getSettingFile(){
-		java.io.InputStream inputStream=null;
-		try{
-			inputStream=new java.io.FileInputStream(new java.io.File(settingFileName));	
-			//return inputStream;
-		}catch(Exception e){
-			mycommons.logging.Logging.info("failed getting application setting file");
-			System.exit(mycommons.constants.System.CS_EXIT_ERROR);
-		}finally{
-			return inputStream;
-		}
+	public mycommons.db.connection.ParaConnection setParaSourceConnectToDatabase(){
+		mycommons.db.connection.ParaConnection rv=this.setParaConnectToDatabase();
+		return rv;
 	}
-	***/
+	public mycommons.db.connection.ParaConnection setParaSourceConnectToDatabase(mycommons.routines.file.Filename settingFile){
+		mycommons.db.connection.ParaConnection rv=this.setParaConnectToDatabase(settingFile);
+		return rv;
+	}
 }
