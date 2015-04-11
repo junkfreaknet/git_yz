@@ -22,17 +22,7 @@ public class MainPrintSheetFromDB {
 
 		//db connecting paramaters
 		mycommons.db.connection.ParaConnection paraConnection=cmmnApplication.setParaConnectToDatabase();
-		/***
-		mycommons.db.connection.ParaConnection paraConnection=new mycommons.db.connection.ParaConnection();
-		paraConnection.setForName(new mycommons.db.connection.ForName(mycommons.constants.DB.MS_SQL_SERVER_FOR_NAME));
-		paraConnection.setServer(new mycommons.db.connection.Server(mycommons.constants.DB.MS_SQL_SERVER_SERVER_NAME));
-		paraConnection.setHost(new mycommons.db.connection.Host("127.0.0.1"));
-		paraConnection.setInstance(new mycommons.db.connection.Instance("SQLEXPRESS"));
-		paraConnection.setPort(new mycommons.net.tcp.Port("1433"));
-		paraConnection.setDataBase(new mycommons.db.connection.DataBase("TESTDBJAVA"));
-		paraConnection.setUser(new mycommons.db.connection.User("sa"));
-		paraConnection.setPassWord(new mycommons.db.connection.Password("sanoriyuki"));
-		***/
+
 		//print paramater
 		yz.logistic.print.sheets.PrintParameter paraPrint=new yz.logistic.print.sheets.PrintParameter();
 		paraPrint.setPrinter(new mycommons.print.Printer("Bullzip PDF Printer"));
@@ -46,7 +36,7 @@ public class MainPrintSheetFromDB {
 		yz.logistic.generic.ShippingDate shippingDate=new yz.logistic.generic.ShippingDate("20140807");
 		yz.logistic.generic.ShippingNo shippingNo=new yz.logistic.generic.ShippingNo("10");
 		
-		yz.logistic.print.sheets.parameters.Basic paraBasic=new yz.logistic.print.sheets.parameters.Basic(site, shippingDate,shippingNo);
+		//yz.logistic.print.sheets.parameters.Basic paraBasic=new yz.logistic.print.sheets.parameters.Basic(site, shippingDate,shippingNo);
 		
 		byBlock.setShippingDate(shippingDate);
 		byBlock.setShippingNo(shippingNo);

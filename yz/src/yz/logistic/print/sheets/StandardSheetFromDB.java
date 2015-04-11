@@ -41,6 +41,7 @@ public class StandardSheetFromDB implements java.awt.print.Printable{
 			
 			//at last...failed
 			StatusCreate=false;
+			System.exit(mycommons.constants.System.CS_EXIT_ERROR);
 		}		
 	}
 	/***
@@ -96,6 +97,7 @@ public class StandardSheetFromDB implements java.awt.print.Printable{
 			mycommons.logging.Logging.severe(e.toString());
 			//
 			return this.NO_SUCH_PAGE;
+			//System.exit(mycommons.constants.System.CS_EXIT_ERROR);
 		}
 	
 	}
