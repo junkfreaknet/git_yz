@@ -41,9 +41,9 @@ public class MainTransferfromLocalToAzure {
 		
 		//test start
 		System.out.println("main debugging.");
-		System.out.println("local database is "+paraLocal.getDataBase().toStringName());
+		//System.out.println("local database is "+paraLocal.getDataBase().toStringName());
 		//System.out.println("local connection string is "+paraLocal.getConnectionString().getConnectionString());
-		System.out.println("remote connection string is "+paraRemote.getConnectionString());
+		//System.out.println("remote connection string is "+paraRemote.getConnectionString().toString());
 		System.out.println("main debugging end.");
 		//test end
 		
