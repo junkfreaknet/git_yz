@@ -1,5 +1,7 @@
 package testAzureSql;
 
+import mycommons.db.connection.Connection;
+
 //import mycommons.db.connection.Connection;
 
 public class TransferFromLocalToAzure {
@@ -12,8 +14,8 @@ public class TransferFromLocalToAzure {
 	private mycommons.db.connection.ParaConnection paraLocal;
 	private mycommons.db.connection.ParaConnection paraRemote;
 	
-	private java.sql.Statement statementLocal;
-	private java.sql.Statement statementRemote;
+	static private java.sql.Statement statementLocal;
+	static private java.sql.Statement statementRemote;
 	
 	//constructors
 	
@@ -23,7 +25,9 @@ public class TransferFromLocalToAzure {
 	public TransferFromLocalToAzure(mycommons.db.connection.ParaConnection paraLocal,mycommons.db.connection.ParaConnection paraRemote){
 		this.ConstructorCommon(paraLocal, paraRemote);
 	}
-	
+	public TransferFromLocalToAzure(){
+		
+	}
 	//methods private
 	
 	//constructor common
@@ -52,6 +56,21 @@ public class TransferFromLocalToAzure {
 	
 	//transfer table
 	//local ---> azure
+	public void Transfer(mycommons.db.connection.ParaConnection paraLocal,mycommons.db.connection.ParaConnection paraRemote){
+	
+		mycommons.db.connection.Connection connectionLocal=new mycommons.db.connection.Connection(paraLocal);
+		//mycommons.db.connection.Connection mconnectionRemote=new mycommons.db.connection.Connection(paraRemote);
+		mycommons.db.connection.Connection connectionRemote=new mycommons.db.connection.Connection(paraRemote.getConnectionString(), paraRemote);
+		
+		try{
+			java.sql.Statement stmntLocal=connectionLocal.getConnection().createStatement();
+			java.sql.Statement stmntRemote=connectionRemote.getConnection().createStatement();
+			System.out.println("ok");
+		}catch(Exception e){
+			System.out.println("ng");
+			
+		}
+	}
 	public void Transfer(mycommons.db.Table fromTable){
 	
 		try{

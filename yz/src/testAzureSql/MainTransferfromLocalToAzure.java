@@ -48,8 +48,10 @@ public class MainTransferfromLocalToAzure {
 		//test end
 		
 		//transfer database start
-		TransferFromLocalToAzure toAzure=new TransferFromLocalToAzure(paraLocal,paraRemote);
-		toAzure.Transfer(new mycommons.db.Table("dbo.tbl_outfile"));
+		//TransferFromLocalToAzure toAzure=new TransferFromLocalToAzure(paraLocal,paraRemote);
+		//toAzure.Transfer(new mycommons.db.Table("dbo.tbl_outfile"));
+		TransferFromLocalToAzure toAzure=new TransferFromLocalToAzure();
+		toAzure.Transfer(paraLocal, paraRemote);
 		//transfer database end
 		
 		//end message
