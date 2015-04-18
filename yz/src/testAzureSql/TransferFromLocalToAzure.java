@@ -68,6 +68,7 @@ public class TransferFromLocalToAzure {
 			System.out.println("ok");
 		}catch(Exception e){
 			System.out.println("ng");
+			System.exit(mycommons.constants.System.CS_EXIT_ERROR);
 			
 		}
 	}
