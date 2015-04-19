@@ -22,7 +22,17 @@ public class MainPrintSheetFromDB {
 
 		//db connecting paramaters
 		mycommons.db.connection.ParaConnection paraConnection=cmmnApplication.setParaConnectToDatabase();
-
+		//para test start
+		//System.out.println(paraConnection.getConnectionString());
+		System.out.println(paraConnection.getDataBase().toStringName());
+		System.out.println(paraConnection.getForName().toStringValue());
+		System.out.println(paraConnection.getHost().toStringName());
+		System.out.println(paraConnection.getInstance().toStringName());
+		System.out.println(paraConnection.getPassWord().toStringValue());
+		System.out.println(paraConnection.getPort().toStringValue());
+		System.out.println(paraConnection.getServer().toStringName());
+		System.out.println(paraConnection.getUser().toStringName());
+		//para test end.
 		//print paramater
 		yz.logistic.print.sheets.PrintParameter paraPrint=new yz.logistic.print.sheets.PrintParameter();
 		paraPrint.setPrinter(new mycommons.print.Printer("Bullzip PDF Printer"));
