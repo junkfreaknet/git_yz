@@ -17,7 +17,7 @@ public class MainTransferfromLocalToAzure {
 		//start message
 		System.out.println("start program.");
 		//start message end
-		
+		//********************************************************
 		paraLocal.setDataBase(new mycommons.db.connection.DataBase("TESTDBJAVA"));
 		paraLocal.setForName(new mycommons.db.connection.ForName(mycommons.constants.DB.MS_SQL_SERVER_FOR_NAME));
 		paraLocal.setHost(new mycommons.db.connection.Host("127.0.0.1"));
@@ -26,7 +26,8 @@ public class MainTransferfromLocalToAzure {
 		paraLocal.setPort(new mycommons.net.tcp.Port("1433"));
 		//local.setServer(new mycommons.db.connection.Server(source));
 		paraLocal.setUser(new mycommons.db.connection.User("sa"));
-		
+		//***********************************************************
+		//***********************************************************
 		paraRemote.setDataBase(new mycommons.db.connection.DataBase("junkdb"));
 		paraRemote.setForName(new mycommons.db.connection.ForName(mycommons.constants.DB.MS_SQL_SERVER_FOR_NAME));
 		paraRemote.setHost(new mycommons.db.connection.Host("m5hmrx2k6x.database.windows.net"));
@@ -38,13 +39,13 @@ public class MainTransferfromLocalToAzure {
 		
 		String connectionString="jdbc:sqlserver://m5hmrx2k6x.database.windows.net:1433;database=junkdb;user=junkfreaknet@m5hmrx2k6x;password=Noriyuki6403@@;encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
 		paraRemote.setConnectionString(new mycommons.db.connection.ConnectionString(connectionString));
-		
+		//***********************************************************
 		//test start
-		System.out.println("main debugging.");
+		//System.out.println("main debugging.");
 		//System.out.println("local database is "+paraLocal.getDataBase().toStringName());
 		//System.out.println("local connection string is "+paraLocal.getConnectionString().getConnectionString());
 		//System.out.println("remote connection string is "+paraRemote.getConnectionString().toString());
-		System.out.println("main debugging end.");
+		//System.out.println("main debugging end.");
 		//test end
 		
 		//transfer database start
