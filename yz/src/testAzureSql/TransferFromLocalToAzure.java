@@ -60,14 +60,21 @@ public class TransferFromLocalToAzure {
 	
 		mycommons.db.connection.Connection connectionLocal=new mycommons.db.connection.Connection(paraLocal);
 		//mycommons.db.connection.Connection mconnectionRemote=new mycommons.db.connection.Connection(paraRemote);
-		mycommons.db.connection.Connection connectionRemote=new mycommons.db.connection.Connection(paraRemote.getConnectionString(), paraRemote);
+		//connectionLocal.getConnection().getMetaData().getURL();
 		
+		System.out.println("success creating local connection.");
+		mycommons.db.connection.Connection connectionRemote=new mycommons.db.connection.Connection(paraRemote.getConnectionString(), paraRemote);
+		System.out.println("success creating remote connection.");
+		System.out.println("success createing connections.");
 		try{
+			System.out.println("start creating statements.");
 			java.sql.Statement stmntLocal=connectionLocal.getConnection().createStatement();
 			java.sql.Statement stmntRemote=connectionRemote.getConnection().createStatement();
+			System.out.println("end creating statements");
 			System.out.println("ok");
 		}catch(Exception e){
 			System.out.println("ng");
+			System.out.println(e.toString());
 			System.exit(mycommons.constants.System.CS_EXIT_ERROR);
 			
 		}
