@@ -42,19 +42,10 @@ public class MainTransferfromLocalToAzure {
 		String connectionString="jdbc:sqlserver://m5hmrx2k6x.database.windows.net:1433;database=junkdb;user=junkfreaknet@m5hmrx2k6x;password=Noriyuki6403@@;encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
 		paraRemote.setConnectionString(new mycommons.db.connection.ConnectionString(connectionString));
 		//***********************************************************
-		//test start
-		//System.out.println("main debugging.");
-		//System.out.println("local database is "+paraLocal.getDataBase().toStringName());
-		//System.out.println("local connection string is "+paraLocal.getConnectionString().getConnectionString());
-		//System.out.println("remote connection string is "+paraRemote.getConnectionString().toString());
-		//System.out.println("main debugging end.");
-		//test end
-		
+
 		//transfer database start
-		//TransferFromLocalToAzure toAzure=new TransferFromLocalToAzure(paraLocal,paraRemote);
-		//toAzure.Transfer(new mycommons.db.Table("dbo.tbl_outfile"));
-		TransferFromLocalToAzure toAzure=new TransferFromLocalToAzure();
-		toAzure.Transfer(paraLocal, paraRemote);
+		TransferFromLocalToAzure toAzure=new TransferFromLocalToAzure(paraLocal,paraRemote.getConnectionString(),paraRemote);
+		//toAzure.Transfer(new mycommons.db.Table("dbo.tbl_outfile"),new mycommons.db.Table("dbo.tbl_outfile"));
 		//transfer database end
 		
 		//end message
