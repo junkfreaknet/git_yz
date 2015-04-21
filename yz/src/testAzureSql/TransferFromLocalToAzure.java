@@ -15,6 +15,8 @@ public class TransferFromLocalToAzure {
 	private java.sql.Statement statementLocal=null;
 	private java.sql.Statement statementRemote=null;
 	
+	private java.sql.ResultSet rstLocal=null;
+	
 	//constructors
 	
 	//constructor no.1
@@ -68,8 +70,11 @@ public class TransferFromLocalToAzure {
 		try{
 			this.statementLocal=connectionLocal.getConnection().createStatement();
 			this.statementRemote=connectionRemote.getConnection().createStatement();
-			this.statementLocal.execute("");
-			this.statementRemote.execute("");
+			this.rstLocal=this.statementLocal.executeQuery("select * from dbo.tbl_outfile;");
+			while(rstLocal.next()){
+				
+			}
+			//this.statementRemote.execute("");
 			System.out.println("ok");
 		}catch(Exception e){
 			System.out.println("ng");
