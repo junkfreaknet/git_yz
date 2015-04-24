@@ -45,7 +45,7 @@ public class MainTransferfromLocalToAzure {
 
 		//transfer database start
 		TransferFromLocalToAzure toAzure=new TransferFromLocalToAzure(paraLocal,paraRemote.getConnectionString(),paraRemote);
-		//toAzure.Transfer(new mycommons.db.Table("dbo.tbl_outfile"),new mycommons.db.Table("dbo.tbl_outfile"));
+		toAzure.Transfer(new mycommons.db.Table("dbo.tbl_outfile"),new mycommons.db.Table("dbo.tbl_outfile"));
 		//transfer database end
 		
 		//end message
