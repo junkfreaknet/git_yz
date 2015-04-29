@@ -1,5 +1,8 @@
 package testAzureSql;
 
+import mycommons.db.FieldName;
+import mycommons.db.FieldType;
+
 //import mycommons.db.connection.Connection;
 
 public class TransferFromLocalToAzure {
@@ -55,6 +58,16 @@ public class TransferFromLocalToAzure {
 			this.statementLocal=connectionLocal.getConnection().createStatement();
 			this.statementRemote=connectionRemote.getConnection().createStatement();
 			this.rstLocal=this.statementLocal.executeQuery("select * from "+fromTable.getName());
+			
+			java.util.ArrayList<mycommons.db.Field> fields=this.getFields(rstLocal);
+			//
+			for(int i=0;i<fields.size();i++){
+				mycommons.db.Field fld=new mycommons.db.Field();
+				fld=fields.get(i);
+				System.out.println("name is "+fld.getName().getName());
+				System.out.println("type is "+fld.getType().getType());
+			}
+			//
 			int i=0;
 			
 			while(rstLocal.next()){
@@ -83,18 +96,27 @@ public class TransferFromLocalToAzure {
 	//***** private methods end
 	//*****
 	
-	private mycommons.db.Field[] getFieldsMetaData(java.sql.ResultSet in_resultset){
+	private java.util.ArrayList<mycommons.db.Field> getFields(java.sql.ResultSet in_resultset){
 		
-		mycommons.db.Field[] rv=null;
+		java.util.ArrayList<mycommons.db.Field> rv=new java.util.ArrayList<mycommons.db.Field>();
+		
 		try{
 			java.sql.ResultSetMetaData rstMD=in_resultset.getMetaData();
-		
-			return rv;
+			//System.out.println("column count is "+rstMD.getColumnCount());
+			for(int i=mycommons.constants.DB.RESULTSET_INDEX_START_VALUE;i<=rstMD.getColumnCount();i++){
+				//System.out.println("i is "+i);
+				System.out.println("name is "+rstMD.getColumnTypeName(i));
+				mycommons.db.Field fld=new mycommons.db.Field();
+				fld.setName(new mycommons.db.FieldName(rstMD.getColumnName(i)));
+				fld.setType(new mycommons.db.FieldType(rstMD.getColumnType(i)));
+				rv.add(fld);
+			}
 		}catch(Exception e){
 			mycommons.logging.Logging.severe("failed in get result set meta data. stop program.");
 			mycommons.logging.Logging.severe(e.toString());
 			System.exit(mycommons.constants.System.CS_EXIT_ERROR);
 		}
+		return rv;
 	}
 	
 	
