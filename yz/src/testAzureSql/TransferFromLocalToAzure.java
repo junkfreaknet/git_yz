@@ -66,6 +66,7 @@ public class TransferFromLocalToAzure {
 				fld=fields.get(i);
 				System.out.println("name is "+fld.getName().getName());
 				System.out.println("type is "+fld.getType().getType());
+				System.out.println("type sql is "+fld.getTypeSQL().getTypeSQLString(fld.getType()));
 			}
 			//
 			int i=0;
@@ -105,7 +106,7 @@ public class TransferFromLocalToAzure {
 			//System.out.println("column count is "+rstMD.getColumnCount());
 			for(int i=mycommons.constants.DB.RESULTSET_INDEX_START_VALUE;i<=rstMD.getColumnCount();i++){
 				//System.out.println("i is "+i);
-				System.out.println("name is "+rstMD.getColumnTypeName(i));
+				System.out.println("column type is "+rstMD.getColumnTypeName(i));
 				mycommons.db.Field fld=new mycommons.db.Field();
 				fld.setName(new mycommons.db.FieldName(rstMD.getColumnName(i)));
 				fld.setType(new mycommons.db.FieldType(rstMD.getColumnType(i)));
