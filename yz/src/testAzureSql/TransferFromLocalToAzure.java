@@ -110,6 +110,7 @@ public class TransferFromLocalToAzure {
 				mycommons.db.Field fld=new mycommons.db.Field();
 				fld.setName(new mycommons.db.FieldName(rstMD.getColumnName(i)));
 				fld.setType(new mycommons.db.FieldType(rstMD.getColumnType(i)));
+				System.out.println("lengt is "+rstMD.getColumnDisplaySize(i));
 				rv.add(fld);
 			}
 		}catch(Exception e){
