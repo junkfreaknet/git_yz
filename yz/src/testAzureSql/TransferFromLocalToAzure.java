@@ -1,7 +1,9 @@
 package testAzureSql;
 
+import mycommons.db.FieldLength;
 import mycommons.db.FieldName;
 import mycommons.db.FieldType;
+import mycommons.db.IsFieldNullable;
 
 //import mycommons.db.connection.Connection;
 
@@ -59,16 +61,31 @@ public class TransferFromLocalToAzure {
 			this.statementRemote=connectionRemote.getConnection().createStatement();
 			this.rstLocal=this.statementLocal.executeQuery("select * from "+fromTable.getName());
 			
-			java.util.ArrayList<mycommons.db.Field> fields=this.getFields(rstLocal);
-			//
+			java.util.ArrayList<mycommons.db.Field> fields=mycommons.routines.db.Generic.getFields(rstLocal);
+			// test fields
 			for(int i=0;i<fields.size();i++){
 				mycommons.db.Field fld=new mycommons.db.Field();
 				fld=fields.get(i);
 				System.out.println("name is "+fld.getName().getName());
 				System.out.println("type is "+fld.getType().getType());
+				System.out.println("length is "+fld.getLength().getLength());
 				System.out.println("type sql is "+fld.getTypeSQL().getTypeSQLString(fld.getType()));
+				String buff=mycommons.constants.Generic.CS_SPACE;
+				if(fld.getIsNullable().getIsNullale()==java.sql.ResultSetMetaData.columnNoNulls){
+					buff="null not ablable.";
+				}
+				if(fld.getIsNullable().getIsNullale()==java.sql.ResultSetMetaData.columnNullable){
+					buff="null is ok.";
+				}
+				if(fld.getIsNullable().getIsNullale()==java.sql.ResultSetMetaData.columnNullableUnknown){
+					buff="ok or not is unknown.";
+				}
+				System.out.println(buff);
 			}
-			//
+			//test fields end
+			
+			//create remote table
+			
 			int i=0;
 			
 			while(rstLocal.next()){
@@ -96,7 +113,7 @@ public class TransferFromLocalToAzure {
 	//*****
 	//***** private methods end
 	//*****
-	
+	/***
 	private java.util.ArrayList<mycommons.db.Field> getFields(java.sql.ResultSet in_resultset){
 		
 		java.util.ArrayList<mycommons.db.Field> rv=new java.util.ArrayList<mycommons.db.Field>();
@@ -106,11 +123,13 @@ public class TransferFromLocalToAzure {
 			//System.out.println("column count is "+rstMD.getColumnCount());
 			for(int i=mycommons.constants.DB.RESULTSET_INDEX_START_VALUE;i<=rstMD.getColumnCount();i++){
 				//System.out.println("i is "+i);
-				System.out.println("column type is "+rstMD.getColumnTypeName(i));
+				//System.out.println("column type is "+rstMD.getColumnTypeName(i));
 				mycommons.db.Field fld=new mycommons.db.Field();
 				fld.setName(new mycommons.db.FieldName(rstMD.getColumnName(i)));
 				fld.setType(new mycommons.db.FieldType(rstMD.getColumnType(i)));
-				System.out.println("lengt is "+rstMD.getColumnDisplaySize(i));
+				fld.setLength(new mycommons.db.FieldLength(rstMD.getColumnDisplaySize(i)));
+				fld.setIsNullable(new mycommons.db.IsFieldNullable(rstMD.isNullable(i)));
+				//System.out.println("lengt is "+rstMD.getColumnDisplaySize(i));
 				rv.add(fld);
 			}
 		}catch(Exception e){
@@ -120,7 +139,7 @@ public class TransferFromLocalToAzure {
 		}
 		return rv;
 	}
-	
+	***/
 	
 	//*****
 	//***** public methods start
