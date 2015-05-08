@@ -62,11 +62,12 @@ public class TransferFromLocalToAzure {
 			this.rstLocal=this.statementLocal.executeQuery("select * from "+fromTable.getName());
 			
 			java.util.ArrayList<mycommons.db.Field> fields=mycommons.routines.db.Generic.getFields(rstLocal);
-			// test fields
+			
+			// test fields start
 			for(int i=0;i<fields.size();i++){
 				mycommons.db.Field fld=new mycommons.db.Field();
 				fld=fields.get(i);
-				System.out.println("name is "+fld.getName().getName());
+				System.out.println((i+1)+" name is "+fld.getName().getName());
 				System.out.println("type is "+fld.getType().getType());
 				System.out.println("length is "+fld.getLength().getLength());
 				System.out.println("type sql is "+fld.getTypeSQL().getTypeSQLString(fld.getType()));
@@ -84,8 +85,11 @@ public class TransferFromLocalToAzure {
 			}
 			//test fields end
 			
-			//create remote table
-			
+			//create remote table at here
+			mycommons.db.SQLString sqlobj=mycommons.routines.db.Definition.createSqlStringCreateTable(toTable, fields);
+			System.out.println(sqlobj.toString());
+			//statementRemote.execute(sqlobj.toString());
+			// add records to remote
 			int i=0;
 			
 			while(rstLocal.next()){
@@ -96,13 +100,11 @@ public class TransferFromLocalToAzure {
 					break;
 				}
 			}
-			//this.statementRemote.execute("");
+
+			// at last. end.
 			mycommons.logging.Logging.info("ok");
 		}catch(Exception e){
-			//System.out.println("ng");	//*****
-			//***** public methods end
-			//*****
-			//System.out.println(e.toString());
+
 			mycommons.logging.Logging.severe("failed in trasfering from local to remote.stop program.");
 			mycommons.logging.Logging.severe(e.toString());
 			System.exit(mycommons.constants.System.CS_EXIT_ERROR);
