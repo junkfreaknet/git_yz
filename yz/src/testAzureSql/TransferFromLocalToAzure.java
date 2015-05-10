@@ -73,7 +73,7 @@ public class TransferFromLocalToAzure {
 				System.out.println("type sql is "+fld.getTypeSQL().getTypeSQLString(fld.getType()));
 				String buff=mycommons.constants.Generic.CS_SPACE;
 				if(fld.getIsNullable().getIsNullale()==java.sql.ResultSetMetaData.columnNoNulls){
-					buff="null not ablable.";
+					buff="null not abelable.";
 				}
 				if(fld.getIsNullable().getIsNullale()==java.sql.ResultSetMetaData.columnNullable){
 					buff="null is ok.";
@@ -88,7 +88,7 @@ public class TransferFromLocalToAzure {
 			//create remote table at here
 			mycommons.db.SQLString sqlobj=mycommons.routines.db.Definition.createSqlStringCreateTable(toTable, fields);
 			System.out.println(sqlobj.toString());
-			//statementRemote.execute(sqlobj.toString());
+			statementRemote.execute(sqlobj.toString());
 			// add records to remote
 			int i=0;
 			
