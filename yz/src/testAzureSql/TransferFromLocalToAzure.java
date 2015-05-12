@@ -87,7 +87,7 @@ public class TransferFromLocalToAzure {
 			
 			//create remote table at here
 			mycommons.db.SQLString sqlobj=mycommons.routines.db.Definition.createSqlStringCreateTable(toTable, fields);
-			System.out.println(sqlobj.toString());
+			//System.out.println(sqlobj.toString());
 			statementRemote.execute(sqlobj.toString());
 			// add records to remote
 			int i=0;
@@ -110,6 +110,28 @@ public class TransferFromLocalToAzure {
 			System.exit(mycommons.constants.System.CS_EXIT_ERROR);
 			
 		}		
+	}
+	private mycommons.db.SQLString createSQLInsert(mycommons.db.Table table_Target,java.sql.ResultSet rst_Source,java.util.ArrayList<mycommons.db.Field> fields){
+		
+		String buff=mycommons.constants.Generic.CS_SPACE;
+		
+		//insert command
+		buff=buff+mycommons.constants.db.sql.ddl.Commands.COMMAND_INSERT_INTO;
+		buff=buff+mycommons.constants.Generic.CS_ONE_BLANK+table_Target.getName()+mycommons.constants.Generic.CS_ONE_BLANK;
+		
+		//fields
+		buff=buff+mycommons.constants.db.sql.ddl.Commands.FIELDS_START;
+		//java.sql.ResultSetMetaData mtd=rst_Source.getMetaData();
+		
+		buff=buff+mycommons.constants.db.sql.ddl.Commands.FIELDS_END;
+		
+		//values
+		buff=buff+mycommons.constants.db.sql.ddl.Commands.VALUES+mycommons.constants.db.sql.ddl.Commands.FIELDS_START;
+		
+		buff=buff+mycommons.constants.db.sql.ddl.Commands.FIELDS_END;
+		//at last
+		return new mycommons.db.SQLString(buff);
+		
 	}
 
 	//*****
