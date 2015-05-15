@@ -21,13 +21,13 @@ public class TransferFromLocalToAzure {
 	
 	//constructor no.1
 	//constructor(para local,para remote)
-	public TransferFromLocalToAzure(mycommons.db.connection.ParaConnection in_paraLocal,mycommons.db.connection.ParaConnection in_paraRemote){
-		this.ConstructorCommon(in_paraLocal, in_paraRemote);
+	public TransferFromLocalToAzure(mycommons.db.connection.ParaConnection para_in_paraLocal,mycommons.db.connection.ParaConnection para_in_paraRemote){
+		this.ConstructorCommon(para_in_paraLocal, para_in_paraRemote);
 	}
 	//constructor no.2
 	//constructor(para local,connection string remote,para local)
-	public TransferFromLocalToAzure(mycommons.db.connection.ParaConnection in_paraLocal,mycommons.db.connection.ConnectionString in_connectionStringRemote,mycommons.db.connection.ParaConnection in_paraRemote){
-		this.ConstructorCommon(in_paraLocal, in_connectionStringRemote, in_paraRemote);
+	public TransferFromLocalToAzure(mycommons.db.connection.ParaConnection para_in_paraLocal,mycommons.db.connection.ConnectionString para_in_connectionStringRemote,mycommons.db.connection.ParaConnection para_in_paraRemote){
+		this.ConstructorCommon(para_in_paraLocal, para_in_connectionStringRemote, para_in_paraRemote);
 	}
 	/***
 	public TransferFromLocalToAzure(){
@@ -37,17 +37,17 @@ public class TransferFromLocalToAzure {
 	//methods private
 	
 	//constructor common no.1.
-	private void ConstructorCommon(mycommons.db.connection.ParaConnection in_paraLocal,mycommons.db.connection.ParaConnection in_paraRemote){
+	private void ConstructorCommon(mycommons.db.connection.ParaConnection para_in_paraLocal,mycommons.db.connection.ParaConnection para_in_paraRemote){
 		
-		this.connectionLocal=new mycommons.db.connection.Connection(in_paraLocal);
-		this.connectionRemote=new mycommons.db.connection.Connection(in_paraRemote);
+		this.connectionLocal=new mycommons.db.connection.Connection(para_in_paraLocal);
+		this.connectionRemote=new mycommons.db.connection.Connection(para_in_paraRemote);
 
 	}
 	//constructor commons no.2
-	private void ConstructorCommon(mycommons.db.connection.ParaConnection in_paraLocal,mycommons.db.connection.ConnectionString in_connectionStringRemote,mycommons.db.connection.ParaConnection in_paraRemote){
+	private void ConstructorCommon(mycommons.db.connection.ParaConnection para_in_paraLocal,mycommons.db.connection.ConnectionString in_connectionStringRemote,mycommons.db.connection.ParaConnection para_in_paraRemote){
 		
-		this.connectionLocal=new mycommons.db.connection.Connection(in_paraLocal);
-		this.connectionRemote=new mycommons.db.connection.Connection(in_connectionStringRemote,in_paraRemote);
+		this.connectionLocal=new mycommons.db.connection.Connection(para_in_paraLocal);
+		this.connectionRemote=new mycommons.db.connection.Connection(in_connectionStringRemote,para_in_paraRemote);
 	}
 
 	//*****
@@ -55,15 +55,20 @@ public class TransferFromLocalToAzure {
 	//*****
 	
 	//common transfer table common.
-	private void TransferCommon(mycommons.db.Table fromTable,mycommons.db.Table toTable){
+	private void TransferCommon(mycommons.db.Table para_fromTable,mycommons.db.Table para_toTable){
 		try{
+			
 			this.statementLocal=connectionLocal.getConnection().createStatement();
 			this.statementRemote=connectionRemote.getConnection().createStatement();
-			this.rstLocal=this.statementLocal.executeQuery("select * from "+fromTable.getName());
+			this.rstLocal=this.statementLocal.executeQuery("select * from "+para_fromTable.getName());
 			
+			//get fields
 			java.util.ArrayList<mycommons.db.Field> fields=mycommons.routines.db.Generic.getFields(rstLocal);
-			
+			//create table
+			mycommons.routines.db.Manipulate.DeleteTable(connectionRemote, para_toTable);
+			mycommons.routines.db.Definition.createTablee(statementRemote, para_toTable, fields);
 			// test fields start
+			/***
 			for(int i=0;i<fields.size();i++){
 				mycommons.db.Field fld=new mycommons.db.Field();
 				fld=fields.get(i);
@@ -83,18 +88,20 @@ public class TransferFromLocalToAzure {
 				}
 				System.out.println(buff);
 			}
+			***/
 			//test fields end
 			
 			//create remote table at here
-			mycommons.db.SQLString sqlobj=mycommons.routines.db.Definition.createSqlStringCreateTable(toTable, fields);
+			//mycommons.db.SQLString sqlobj=mycommons.routines.db.Definition.createSqlStringCreateTable(para_toTable, fields);
 			//System.out.println(sqlobj.toString());
-			statementRemote.execute(sqlobj.toString());
+			//statementRemote.execute(sqlobj.toString());
+
 			// add records to remote
 			int i=0;
 			
 			while(rstLocal.next()){
 
-				
+				mycommons.routines.db.Manipulate.insertRecord(statementRemote, para_toTable, fields, rstLocal);
 				i=i++;
 				if(i>100){
 					break;
