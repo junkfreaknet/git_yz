@@ -1,9 +1,9 @@
 package testAzureSql;
 
-import mycommons.db.FieldLength;
-import mycommons.db.FieldName;
-import mycommons.db.FieldType;
-import mycommons.db.IsFieldNullable;
+//import mycommons.db.FieldLength;
+//import mycommons.db.FieldName;
+//import mycommons.db.FieldType;
+//import mycommons.db.IsFieldNullable;
 
 //import mycommons.db.connection.Connection;
 
@@ -65,8 +65,9 @@ public class TransferFromLocalToAzure {
 			//get fields
 			java.util.ArrayList<mycommons.db.Field> fields=mycommons.routines.db.Generic.getFields(rstLocal);
 			//create table
-			mycommons.routines.db.Manipulate.DeleteTable(connectionRemote, para_toTable);
-			mycommons.routines.db.Definition.createTablee(statementRemote, para_toTable, fields);
+			//mycommons.routines.db.Manipulate.DeleteTable(connectionRemote, para_toTable);
+			//mycommons.routines.db.Definition.createTable(statementRemote, para_toTable, fields);
+			mycommons.routines.db.Definition.createTable(connectionRemote, para_toTable, fields);
 			// test fields start
 			/***
 			for(int i=0;i<fields.size();i++){
@@ -102,8 +103,10 @@ public class TransferFromLocalToAzure {
 			while(rstLocal.next()){
 
 				mycommons.routines.db.Manipulate.insertRecord(statementRemote, para_toTable, fields, rstLocal);
+				
 				i=i++;
-				if(i>100){
+				if(i!=1){
+					System.out.println("exit program. cause by limiter.");
 					break;
 				}
 			}
@@ -118,59 +121,7 @@ public class TransferFromLocalToAzure {
 			
 		}		
 	}
-	private mycommons.db.SQLString createSQLInsert(mycommons.db.Table table_Target,java.sql.ResultSet rst_Source,java.util.ArrayList<mycommons.db.Field> fields){
-		
-		String buff=mycommons.constants.Generic.CS_SPACE;
-		
-		//insert command
-		buff=buff+mycommons.constants.db.sql.ddl.Commands.COMMAND_INSERT_INTO;
-		buff=buff+mycommons.constants.Generic.CS_ONE_BLANK+table_Target.getName()+mycommons.constants.Generic.CS_ONE_BLANK;
-		
-		//fields
-		buff=buff+mycommons.constants.db.sql.ddl.Commands.FIELDS_START;
-		//java.sql.ResultSetMetaData mtd=rst_Source.getMetaData();
-		
-		buff=buff+mycommons.constants.db.sql.ddl.Commands.FIELDS_END;
-		
-		//values
-		buff=buff+mycommons.constants.db.sql.ddl.Commands.VALUES+mycommons.constants.db.sql.ddl.Commands.FIELDS_START;
-		
-		buff=buff+mycommons.constants.db.sql.ddl.Commands.FIELDS_END;
-		//at last
-		return new mycommons.db.SQLString(buff);
-		
-	}
 
-	//*****
-	//***** private methods end
-	//*****
-	/***
-	private java.util.ArrayList<mycommons.db.Field> getFields(java.sql.ResultSet in_resultset){
-		
-		java.util.ArrayList<mycommons.db.Field> rv=new java.util.ArrayList<mycommons.db.Field>();
-		
-		try{
-			java.sql.ResultSetMetaData rstMD=in_resultset.getMetaData();
-			//System.out.println("column count is "+rstMD.getColumnCount());
-			for(int i=mycommons.constants.DB.RESULTSET_INDEX_START_VALUE;i<=rstMD.getColumnCount();i++){
-				//System.out.println("i is "+i);
-				//System.out.println("column type is "+rstMD.getColumnTypeName(i));
-				mycommons.db.Field fld=new mycommons.db.Field();
-				fld.setName(new mycommons.db.FieldName(rstMD.getColumnName(i)));
-				fld.setType(new mycommons.db.FieldType(rstMD.getColumnType(i)));
-				fld.setLength(new mycommons.db.FieldLength(rstMD.getColumnDisplaySize(i)));
-				fld.setIsNullable(new mycommons.db.IsFieldNullable(rstMD.isNullable(i)));
-				//System.out.println("lengt is "+rstMD.getColumnDisplaySize(i));
-				rv.add(fld);
-			}
-		}catch(Exception e){
-			mycommons.logging.Logging.severe("failed in get result set meta data. stop program.");
-			mycommons.logging.Logging.severe(e.toString());
-			System.exit(mycommons.constants.System.CS_EXIT_ERROR);
-		}
-		return rv;
-	}
-	***/
 	
 	//*****
 	//***** public methods start
@@ -179,7 +130,7 @@ public class TransferFromLocalToAzure {
 	//transfer table.
 	public void Transfer(mycommons.db.Table fromTable,mycommons.db.Table toTable){
 
-		mycommons.routines.db.Manipulate.DeleteTable(this.connectionRemote, toTable);
+		//mycommons.routines.db.Manipulate.DeleteTable(this.connectionRemote, toTable);
 		this.TransferCommon(fromTable, toTable);
 	}
 	
