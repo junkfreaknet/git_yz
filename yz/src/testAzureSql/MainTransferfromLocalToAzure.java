@@ -39,7 +39,7 @@ public class MainTransferfromLocalToAzure {
 		paraRemote.setServer(new mycommons.db.connection.Server(mycommons.constants.DB.SERVER_SQLSERVER));
 		paraRemote.setUser(new mycommons.db.connection.User("junk.freak.net@gmail.com"));
 		
-		String connectionString="jdbc:sqlserver://m5hmrx2k6x.database.windows.net:1433;database=junkdb3;user=junkfreaknet@m5hmrx2k6x;password=Noriyuki6403@@;encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
+		String connectionString="jdbc:sqlserver://m5hmrx2k6x.database.windows.net:1433;database=junkdb;user=junkfreaknet@m5hmrx2k6x;password=Noriyuki6403@@;encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
 		//String connectionString="jdbc:sqlserver://m5hmrx2k6x.database.windows.net:1433;database=junkdb;user=junkfreaknet@m5hmrx2k6x;password=Noriyuki6403@@;encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;SendStringParametersAsUnicode=false;";
 		paraRemote.setConnectionString(new mycommons.db.connection.ConnectionString(connectionString));
 		//***********************************************************
