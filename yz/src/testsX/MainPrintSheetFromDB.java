@@ -17,44 +17,44 @@ public class MainPrintSheetFromDB {
 		//logger.info("start "+PGNAME+".");
 		//mycommons.logging.Logging.info("start "+PGNAME+".");
 
-		//drawer
-		yz.logistic.print.sheets.StandardSheetFromDB drawer=new yz.logistic.print.sheets.StandardSheetFromDB();
-
-		//db connecting paramaters
-		mycommons.db.connection.ParaConnection paraConnection=cmmnApplication.setParaConnectToDatabase();
-		//para test start
+		//db connecting parameters
+		mycommons.db.connection.ParaConnection paraDBConnection=cmmnApplication.setParaConnectToDatabase();
+		
+		//para database test start
 		//System.out.println(paraConnection.getConnectionString());
-		System.out.println(paraConnection.getDataBase().toStringName());
-		System.out.println(paraConnection.getForName().toStringValue());
-		System.out.println(paraConnection.getHost().toStringName());
-		System.out.println(paraConnection.getInstance().toStringName());
-		System.out.println(paraConnection.getPassWord().toStringValue());
-		System.out.println(paraConnection.getPort().toStringValue());
-		System.out.println(paraConnection.getServer().toStringName());
-		System.out.println(paraConnection.getUser().toStringName());
-		//para test end.
-		//print paramater
+		System.out.println(paraDBConnection.getDataBase().toStringName());
+		System.out.println(paraDBConnection.getForName().toStringValue());
+		System.out.println(paraDBConnection.getHost().toStringName());
+		System.out.println(paraDBConnection.getInstance().toStringName());
+		System.out.println(paraDBConnection.getPassWord().toStringValue());
+		System.out.println(paraDBConnection.getPort().toStringValue());
+		System.out.println(paraDBConnection.getServer().toStringName());
+		System.out.println(paraDBConnection.getUser().toStringName());
+		//para database test end.
+		
+		//print technical parameters start
 		yz.logistic.print.sheets.PrintParameter paraPrint=new yz.logistic.print.sheets.PrintParameter();
 		paraPrint.setPrinter(new mycommons.print.Printer("Bullzip PDF Printer"));
 		paraPrint.setPaperOrientation(new mycommons.print.PaperOrientation(mycommons.print.Constants.PAPERORIENTATION_LANDSCAPE));
 		paraPrint.setPaperSize(new mycommons.print.PaperSize(mycommons.print.Constants.PAPERSIZE_B4));
 		paraPrint.setSheet(new mycommons.print.Sheet("StandardSheetB4"));
+		//print technical parameters end
 		
+		//print application parameters set start
 		yz.logistic.print.sheets.parameters.ByBlock byBlock=new yz.logistic.print.sheets.parameters.ByBlock();
 		
+		//basic site,shipping date,shipping no
 		yz.logistic.generic.Site site=new yz.logistic.generic.Site("0300");
 		yz.logistic.generic.ShippingDate shippingDate=new yz.logistic.generic.ShippingDate("20140807");
 		yz.logistic.generic.ShippingNo shippingNo=new yz.logistic.generic.ShippingNo("10");
-		
-		//yz.logistic.print.sheets.parameters.Basic paraBasic=new yz.logistic.print.sheets.parameters.Basic(site, shippingDate,shippingNo);
 		
 		byBlock.setShippingDate(shippingDate);
 		byBlock.setShippingNo(shippingNo);
 		byBlock.setSite(site);
 		
-		//byBlock.setBasic(paraBasic);
-		
+		//set block number s start
 		yz.logistic.generic.BlockNo[] blockno_s=new yz.logistic.generic.BlockNo[13];
+		
 		blockno_s[0]=new yz.logistic.generic.BlockNo("01");
 		blockno_s[1]=new yz.logistic.generic.BlockNo("02");
 		blockno_s[2]=new yz.logistic.generic.BlockNo("03");
@@ -68,28 +68,37 @@ public class MainPrintSheetFromDB {
 		blockno_s[10]=new yz.logistic.generic.BlockNo("11");
 		blockno_s[11]=new yz.logistic.generic.BlockNo("12");
 		blockno_s[12]=new yz.logistic.generic.BlockNo("13");
+		
 		byBlock.setBlockNo_s(blockno_s);
 		
-		//display parameters on console
-		//System.out.println("site "+byBlock.getSite().getSite());
-		//System.out.println("shipping date "+byBlock.getShippingDate().getYYYYMMDD());
-		//System.out.println("shipping number "+byBlock.getShippingNo().getShippingNo());
+		//print application parameters set end
+		
+		//display parameters on console start
 		String buff;
 		buff="site="+byBlock.getSite().getSite()+":";
 		buff=buff+"shipping date="+byBlock.getShippingDate().getYYYYMMDD()+":";
 		buff=buff+"shipping number="+byBlock.getShippingNo().getShippingNo();
 		//logger.info(buff);
 		mycommons.logging.Logging.info(buff);
+		
 		blockno_s=byBlock.getBlockNo_s();
+		
 		for(int i=0;i<blockno_s.length;i++){
 			//System.out.println("block no "+blockno_s[i].getBlockNo());
 			//logger.info("block no "+blockno_s[i].getBlockNo());
 		}
-		//
+		
+		//display parameters on console end
+		
+		//drawer
+		yz.logistic.print.sheets.StandardSheetFromDB drawer=new yz.logistic.print.sheets.StandardSheetFromDB();
+		//print
 		yz.logistic.print.sheets.PrintStandardSheetFromDB sheet=new yz.logistic.print.sheets.PrintStandardSheetFromDB();
-		sheet.print(drawer, paraConnection, paraPrint, byBlock);
-		//logger.info("end "+PGNAME+".");
-		mycommons.logging.Logging.info("end "+PGNAME+".");
+		sheet.print(drawer, paraDBConnection, paraPrint, byBlock);
+		
+		//end
+		cmmnApplication.end();
+
 	}
 
 }

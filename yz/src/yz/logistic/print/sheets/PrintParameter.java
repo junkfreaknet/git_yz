@@ -1,5 +1,7 @@
 package yz.logistic.print.sheets;
 
+import mycommons.print.Printer;
+
 public class PrintParameter {
 
 	private mycommons.print.Printer printer;
@@ -9,7 +11,10 @@ public class PrintParameter {
 	
 	//constructor
 	public PrintParameter(){
-		
+		this.printer=new mycommons.print.Printer();
+		this.paperOrientation=new mycommons.print.PaperOrientation();
+		this.paperSize=new mycommons.print.PaperSize();
+		this.sheet=new mycommons.print.Sheet();
 	}
 	public PrintParameter(mycommons.print.Printer inPrinter,mycommons.print.PaperOrientation inPaperOrientation,mycommons.print.PaperSize inPaperSize,mycommons.print.Sheet inSheet){
 		this.printer=inPrinter;

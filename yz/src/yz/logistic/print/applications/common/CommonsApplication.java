@@ -8,7 +8,7 @@ package yz.logistic.print.applications.common;
 public class CommonsApplication implements mycommons.applications.commons.CommonsApplication{
 
 	//seting file name
-	final String settingFileName="Setting.properties";
+	final String defaultSettingFileName="DefaultSetting.properties";
 	
 	//type of db
 	final String DBSourceProperty="DBSource";	
@@ -52,7 +52,7 @@ public class CommonsApplication implements mycommons.applications.commons.Common
 	
 	public mycommons.db.connection.ParaConnection setParaConnectToDatabase(){
 		
-		mycommons.db.connection.ParaConnection rv=this.setParaConnectToDatabase(new mycommons.routines.file.Filename(settingFileName));
+		mycommons.db.connection.ParaConnection rv=this.setParaConnectToDatabase(new mycommons.routines.file.Filename(defaultSettingFileName));
 		return rv;
 	}
 	
