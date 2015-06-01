@@ -44,11 +44,11 @@ public class CommonsApplication implements mycommons.applications.commons.Common
 	
 	public void run(){}
 	
-	//misc
+	//*****misc*****
 	public void setApplicationName(String pgName){
 		this.AppName=pgName;
 	}
-	//get paramaters for connecting to database
+	//*****get paramaters for connecting to database*****
 	
 	public mycommons.db.connection.ParaConnection setParaConnectToDatabase(){
 		
@@ -61,6 +61,7 @@ public class CommonsApplication implements mycommons.applications.commons.Common
 		mycommons.db.connection.ParaConnection rv=new mycommons.db.connection.ParaConnection();
 		return rv;
 	}
+	/***
 	public mycommons.db.connection.ParaConnection setParaSourceConnectToDatabase(){
 		mycommons.db.connection.ParaConnection rv=this.setParaConnectToDatabase();
 		return rv;
@@ -69,4 +70,5 @@ public class CommonsApplication implements mycommons.applications.commons.Common
 		mycommons.db.connection.ParaConnection rv=this.setParaConnectToDatabase(settingFile);
 		return rv;
 	}
+	***/
 }
