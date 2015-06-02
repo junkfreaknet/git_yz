@@ -8,7 +8,7 @@ package yz.logistic.print.applications.common;
 public class CommonsApplication implements mycommons.applications.commons.CommonsApplication{
 
 	//seting file name
-	final String defaultSettingFileName="DefaultSetting.properties";
+	//final String defaultSettingFileName="DefaultSetting.properties";
 	
 	//type of db
 	final String DBSourceProperty="DBSource";	
@@ -52,13 +52,25 @@ public class CommonsApplication implements mycommons.applications.commons.Common
 	
 	public mycommons.db.connection.ParaConnection setParaConnectToDatabase(){
 		
-		mycommons.db.connection.ParaConnection rv=this.setParaConnectToDatabase(new mycommons.routines.file.Filename(defaultSettingFileName));
+		mycommons.db.connection.ParaConnection rv=this.setParaConnectToDatabase(new mycommons.routines.file.Filename(yz.logistic.print.sheets.Constants.DEFAULT_SETTING_PROPERTIES_FILE));
 		return rv;
 	}
 	
-	public mycommons.db.connection.ParaConnection setParaConnectToDatabase(mycommons.routines.file.Filename settingFile){
+	public mycommons.db.connection.ParaConnection setParaConnectToDatabase(mycommons.routines.file.Filename propertiesFile){
 		
 		mycommons.db.connection.ParaConnection rv=new mycommons.db.connection.ParaConnection();
+
+		try{
+			java.util.Properties properties=new java.util.Properties();
+			java.io.InputStream is=new java.io.FileInputStream(propertiesFile.getName());
+			properties.load(is);
+			System.out.println(properties.getProperty(yz.logistic.print.sheets.Constants.KEY_VALUE_PRINTER_SETTING));
+
+		}catch(Exception e){
+			mycommons.logging.Logging.severe("setting database connection parameters failed.stop this program.");
+			System.exit(mycommons.constants.System.CS_EXIT_ERROR);	
+			//return rv;
+		}
 		return rv;
 	}
 	/***
