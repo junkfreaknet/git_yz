@@ -1,4 +1,4 @@
-package yz.logistic.print.applications.common;
+package yz.logistic.print.common;
 
 public class ConnectionToDB {
 

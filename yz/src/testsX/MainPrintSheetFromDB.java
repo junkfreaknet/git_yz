@@ -10,7 +10,7 @@ public class MainPrintSheetFromDB {
 		
 		final String PGNAME="Print B4 standard haibun Sheet From DB";
 		
-		yz.logistic.print.applications.common.CommonsApplication cmmnApplication=new yz.logistic.print.applications.common.CommonsApplication(PGNAME);
+		yz.logistic.print.common.CommonsApplication cmmnApplication=new yz.logistic.print.common.CommonsApplication(PGNAME);
 		cmmnApplication.start();
 		
 		//java.util.logging.Logger logger=java.util.logging.Logger.getLogger("logger");
@@ -22,14 +22,14 @@ public class MainPrintSheetFromDB {
 		
 		//para database test start
 		//System.out.println(paraConnection.getConnectionString());
-		System.out.println(paraDBConnection.getDataBase().toStringName());
-		System.out.println(paraDBConnection.getForName().toStringValue());
-		System.out.println(paraDBConnection.getHost().toStringName());
-		System.out.println(paraDBConnection.getInstance().toStringName());
-		System.out.println(paraDBConnection.getPassWord().toStringValue());
-		System.out.println(paraDBConnection.getPort().toStringValue());
-		System.out.println(paraDBConnection.getServer().toStringName());
-		System.out.println(paraDBConnection.getUser().toStringName());
+		System.out.println("database "+paraDBConnection.getDataBase().toStringName());
+		System.out.println("for name "+paraDBConnection.getForName().toStringValue());
+		System.out.println("host "+paraDBConnection.getHost().toStringName());
+		System.out.println("instance "+paraDBConnection.getInstance().toStringName());
+		System.out.println("password "+paraDBConnection.getPassWord().toStringValue());
+		System.out.println("port "+paraDBConnection.getPort().toStringValue());
+		System.out.println("server "+paraDBConnection.getServer().toStringName());
+		System.out.println("user "+paraDBConnection.getUser().toStringName());
 		//para database test end.
 		
 		//print technical parameters start
