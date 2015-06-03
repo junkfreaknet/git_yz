@@ -21,7 +21,7 @@ public class MainPrintSheetFromDB {
 		mycommons.db.connection.ParaConnection paraDBConnection=cmmnApplication.setParaConnectToDatabase();
 		
 		//para database test start
-		//System.out.println(paraConnection.getConnectionString());
+		//System.out.println(paraDBConnection.getConnectionString());
 		System.out.println("database "+paraDBConnection.getDataBase().toStringName());
 		System.out.println("for name "+paraDBConnection.getForName().toStringValue());
 		System.out.println("host "+paraDBConnection.getHost().toStringName());

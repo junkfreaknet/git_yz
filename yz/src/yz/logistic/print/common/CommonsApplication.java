@@ -96,8 +96,7 @@ public class CommonsApplication implements mycommons.applications.commons.Common
 			org.w3c.dom.Element connection=document.getDocumentElement();//get element for database connection
 			
 			rv.setDataBase(new mycommons.db.connection.DataBase(connection.getAttribute(yz.logistic.print.common.Constants.ATTRIBUTE_NAME_DATABASE_CONNECTION_DATABASE)));
-			rv.setForName(new mycommons.db.connection.ForName(connection.getAttribute(yz.logistic.print.common.Constants.ATTRIBUTE_NAME_DATABASE_CONNECTION_FOR_NAME)));
-			rv.setForName(new mycommons.db.connection.ForName(mycommons.constants.DB.MS_SQL_SERVER_SERVER_NAME));
+			rv.setForName(new mycommons.db.connection.ForName(mycommons.constants.DB.MS_SQL_SERVER_FOR_NAME));
 			rv.setHost(new mycommons.db.connection.Host(connection.getAttribute(yz.logistic.print.common.Constants.ATTRIBUTE_NAME_DATABASE_CONNECTION_HOST)));
 			rv.setInstance(new mycommons.db.connection.Instance(connection.getAttribute(yz.logistic.print.common.Constants.ATTRIBUTE_NAME_DATABASE_CONNECTION_INSTANCE)));
 			rv.setPassWord(new mycommons.db.connection.Password(connection.getAttribute(yz.logistic.print.common.Constants.ATTRIBUTE_NAME_DATABASE_CONNECTION_PASSWORD)));
