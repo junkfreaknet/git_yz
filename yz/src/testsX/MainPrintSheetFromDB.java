@@ -33,7 +33,7 @@ public class MainPrintSheetFromDB {
 		//para database test end.
 		
 		//print technical parameters start
-		yz.logistic.print.sheets.PrintParameter paraPrint=new yz.logistic.print.sheets.PrintParameter();
+		yz.logistic.print.common.PrintParameter paraPrint=new yz.logistic.print.common.PrintParameter();
 		paraPrint.setPrinter(new mycommons.print.Printer("Bullzip PDF Printer"));
 		paraPrint.setPaperOrientation(new mycommons.print.PaperOrientation(mycommons.print.Constants.PAPERORIENTATION_LANDSCAPE));
 		paraPrint.setPaperSize(new mycommons.print.PaperSize(mycommons.print.Constants.PAPERSIZE_B4));

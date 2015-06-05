@@ -24,7 +24,7 @@ public class PrintStandardSheetFromDB {
 	***/
 
 	//print sheets by a block
-	public void print(yz.logistic.print.sheets.StandardSheetFromDB drawer,mycommons.db.connection.ParaConnection paraConnection,yz.logistic.print.sheets.PrintParameter paraPrintParameter,yz.logistic.print.sheets.parameters.ByBlock paraBlock){
+	public void print(yz.logistic.print.sheets.StandardSheetFromDB drawer,mycommons.db.connection.ParaConnection paraConnection,yz.logistic.print.common.PrintParameter paraPrintParameter,yz.logistic.print.sheets.parameters.ByBlock paraBlock){
 		/***
 		 EXPLANATION
 		 drawer...an object of sheet drawer 
@@ -47,7 +47,7 @@ public class PrintStandardSheetFromDB {
 		
 	}
 	
-	private void printCore(yz.logistic.print.sheets.StandardSheetFromDB drawer,yz.logistic.print.sheets.PrintParameter paraPrintParameter,yz.logistic.print.sheets.parameters.ByBlock byBlock,yz.logistic.generic.BlockNo blockno){
+	private void printCore(yz.logistic.print.sheets.StandardSheetFromDB drawer,yz.logistic.print.common.PrintParameter paraPrintParameter,yz.logistic.print.sheets.parameters.ByBlock byBlock,yz.logistic.generic.BlockNo blockno){
 		
 		//create DocFlavor
 		javax.print.DocFlavor docFlavor=javax.print.DocFlavor.SERVICE_FORMATTED.PRINTABLE;
@@ -106,7 +106,7 @@ public class PrintStandardSheetFromDB {
 	
 	//misc
 	//get attributes
-	private javax.print.attribute.HashPrintRequestAttributeSet getPrintReauestAttributeSet(yz.logistic.print.sheets.PrintParameter paraPrint,yz.logistic.generic.BlockNo blockNo){
+	private javax.print.attribute.HashPrintRequestAttributeSet getPrintReauestAttributeSet(yz.logistic.print.common.PrintParameter paraPrint,yz.logistic.generic.BlockNo blockNo){
 		
 		javax.print.attribute.HashPrintRequestAttributeSet rv=new javax.print.attribute.HashPrintRequestAttributeSet();
 		
