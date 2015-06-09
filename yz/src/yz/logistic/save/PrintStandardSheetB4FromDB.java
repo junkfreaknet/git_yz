@@ -1,6 +1,6 @@
 package yz.logistic.save;
 
-import yz.logistic.print.sheets.StandardSheetFromDB;
+import yz.logistic.print.sheets.standard.FromDB;
 
 public class PrintStandardSheetB4FromDB {
 
@@ -57,7 +57,7 @@ public class PrintStandardSheetB4FromDB {
 		javax.print.DocPrintJob docPrintJob=printService_s[idxServices].createPrintJob();
 		
 		//SimpleDoc
-		yz.logistic.print.sheets.StandardSheetFromDB printObj=new yz.logistic.print.sheets.StandardSheetFromDB();
+		yz.logistic.print.sheets.standard.FromDB printObj=new yz.logistic.print.sheets.standard.FromDB();
 		printObj.initConnection(paraConnection);
 		printObj.initRecordSet(sql);
 		javax.print.SimpleDoc doc=new javax.print.SimpleDoc(printObj,docFlavor , null);

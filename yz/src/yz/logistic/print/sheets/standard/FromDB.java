@@ -1,6 +1,6 @@
-package yz.logistic.print.sheets;
+package yz.logistic.print.sheets.standard;
 
-public class StandardSheetFromDB implements java.awt.print.Printable{
+public class FromDB implements java.awt.print.Printable{
 
 	public static boolean StatusCreate;
 	public static boolean StatusRead;
@@ -10,7 +10,7 @@ public class StandardSheetFromDB implements java.awt.print.Printable{
 	static java.sql.ResultSet rst;
 	
 	//constructor
-	public StandardSheetFromDB(){
+	public FromDB(){
 		
 		//db initiation here.
 		//set database statement and result set

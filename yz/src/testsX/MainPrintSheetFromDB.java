@@ -91,9 +91,9 @@ public class MainPrintSheetFromDB {
 		//display parameters on console end
 		
 		//drawer
-		yz.logistic.print.sheets.StandardSheetFromDB drawer=new yz.logistic.print.sheets.StandardSheetFromDB();
+		yz.logistic.print.sheets.standard.FromDB drawer=new yz.logistic.print.sheets.standard.FromDB();
 		//print
-		yz.logistic.print.sheets.PrintStandardSheetFromDB sheet=new yz.logistic.print.sheets.PrintStandardSheetFromDB();
+		yz.logistic.print.sheets.standard.PrintFromDB sheet=new yz.logistic.print.sheets.standard.PrintFromDB();
 		sheet.print(drawer, paraDBConnection, paraPrint, byBlock);
 		
 		//end

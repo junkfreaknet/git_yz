@@ -1,6 +1,6 @@
-package yz.logistic.print.sheets;
+package yz.logistic.print.sheets.standard;
 
-public class PrintStandardSheetFromDB {
+public class PrintFromDB {
 
 	//print sheets by a block number
 	/***
@@ -24,7 +24,7 @@ public class PrintStandardSheetFromDB {
 	***/
 
 	//print sheets by a block
-	public void print(yz.logistic.print.sheets.StandardSheetFromDB drawer,mycommons.db.connection.ParaConnection paraConnection,yz.logistic.print.common.PrintParameter paraPrintParameter,yz.logistic.print.sheets.parameters.ByBlock paraBlock){
+	public void print(yz.logistic.print.sheets.standard.FromDB drawer,mycommons.db.connection.ParaConnection paraConnection,yz.logistic.print.common.PrintParameter paraPrintParameter,yz.logistic.print.sheets.parameters.ByBlock paraBlock){
 		/***
 		 EXPLANATION
 		 drawer...an object of sheet drawer 
@@ -47,7 +47,7 @@ public class PrintStandardSheetFromDB {
 		
 	}
 	
-	private void printCore(yz.logistic.print.sheets.StandardSheetFromDB drawer,yz.logistic.print.common.PrintParameter paraPrintParameter,yz.logistic.print.sheets.parameters.ByBlock byBlock,yz.logistic.generic.BlockNo blockno){
+	private void printCore(yz.logistic.print.sheets.standard.FromDB drawer,yz.logistic.print.common.PrintParameter paraPrintParameter,yz.logistic.print.sheets.parameters.ByBlock byBlock,yz.logistic.generic.BlockNo blockno){
 		
 		//create DocFlavor
 		javax.print.DocFlavor docFlavor=javax.print.DocFlavor.SERVICE_FORMATTED.PRINTABLE;
