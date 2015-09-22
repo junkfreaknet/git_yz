@@ -106,11 +106,20 @@ public class TransferFromLocalToAzure {
 				mycommons.routines.db.Manipulate.insertRecord(statementRemote, para_toTable, rstLocal);				
 				
 				i=i+1;
+				
+				if((i%1000)==0){
+					System.out.println("add "+Integer.toString(i));
+				}				
 				//if(mycommons.routines.generic.Compare.isEqual(i, 0)){
-				if(i==1000){	
+				
+				
+				if(i==10000){	
 					System.out.println("exit program. cause by limiter.");
 					break;
 				}
+				//459803
+				
+
 			}
 
 			// at last. end.
